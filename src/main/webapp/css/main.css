@@ -1,0 +1,34 @@
+img {
+    width: 35%;
+}
+
+footer.footer {
+    height: 50px;
+    width: auto;
+    background-color: burlywood;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer p.copyright {
+    text-align: center;
+    float: right;
+    color: #fff;
+    line-height: 40px;
+    margin-right: 15px;
+    color: darkblue;
+}
+
+header #logo {
+    width: 15%;
+}
+
+h2 {
+    color: darkgoldenrod;
+}
+
+body #userForm {
+    margin-left: 50px;
+}
