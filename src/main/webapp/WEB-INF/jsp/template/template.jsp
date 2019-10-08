@@ -1,5 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-<%@ include file="../../include/importTags.jsp"%>
+<%@ include file="../include/importTags.jsp"%>
 
 <html>
 <head>
