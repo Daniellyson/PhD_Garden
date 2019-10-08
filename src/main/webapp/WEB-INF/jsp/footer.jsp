@@ -2,5 +2,5 @@
 <%@ include file="./include/importTags.jsp"%>
 
 <footer class="footer">
-    <p class="copyright">© Daniellyson de Vasconcelos 2019</p>
+    <p class="copyright">© PhD Garden 2019</p>
 </footer>

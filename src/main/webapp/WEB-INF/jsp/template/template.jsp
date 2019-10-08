@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ include file="../include/importTags.jsp"%>
 
@@ -11,9 +12,9 @@
 <body>
     <div><tiles:insertAttribute name="header" /></div>
 
-    <div>
+    <!--<div>
         <tiles:insertAttribute name="main-content" />
-    </div>
+    </div>-->
 
     <div><tiles:insertAttribute name="footer" /></div>
 </body>
