@@ -1,6 +1,19 @@
 img {
     width: 35%;
 }
+#logo {
+    width: 25%;
+}
+
+<!-- TODO MENU TO THE LEFT -->
+
+.navbar-brand, div#navbarNavDropdown {
+    float: left;
+}
+
+#locale-wrapper {
+    float: right;
+}
 
 footer.footer {
     height: 50px;
@@ -18,10 +31,6 @@ footer p.copyright {
     line-height: 40px;
     margin-right: 15px;
     color: red;
-}
-
-header #logo {
-    width: 15%;
 }
 
 h2 {
