@@ -1,47 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="./include/importTags.jsp"%>
 
+<head>
+     <link rel="stylesheet" href="<spring:url value='static/bootstrap/css/bootstrap.min.header.css' />">
+     <link rel="stylesheet" href="<spring:url value='static/css/Navigation-with-Button.header.css' />">
+     <link rel="stylesheet" href="<spring:url value='static/css/styles.header.css' />">
+
+     <spring:url var="localeFr" value="">
+          <spring:param name="locale" value="fr"/>
+     </spring:url>
+     <spring:url var="localeEn" value="">
+          <spring:param name="locale" value="en"/>
+     </spring:url>
+</head>
+
 <header>
 
-     <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="#"><img id="logo" src='<spring:url value="/images/welcome.jpg"/>'></a>
-          <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-          </button>-->
-          <div  id="menu">
-               <ul class="navbar-nav">
-                    <li class="nav-item active">
-                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown link
-                         </a>
-                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                         </div>
-                    </li>
-               </ul>
-          </div>
-          <div id="locale-wrapper">
-               <spring:url var="localeFr" value="">
-                    <spring:param name="locale" value="fr"/>
-               </spring:url>
-               <spring:url var="localeEn" value="">
-                    <spring:param name="locale" value="en"/>
-               </spring:url>
+     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+          <div class="container">
+               <img id="logo" src="static/img/welcome.jpg" />
+               <a class="navbar-brand" href="#">PhD Garden</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+               <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                         <li role="presentation" class="nav-item"><a class="nav-link active text-white" href="#">First Item</a></li>
+                         <li role="presentation" class="nav-item"><a class="nav-link text-white" href="#">Second Item</a></li>
+                         <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link text-white" href="#">Dropdown </a>
+                              <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">First Item</a><a role="presentation" class="dropdown-item" href="#">Second Item</a><a role="presentation" class="dropdown-item" href="#">Third Item</a></div>
+                         </li>
+                    </ul>
+                    <span class="navbar-text actions">
+                         <a class="text-white login" href="#">Log In</a>
+                         <a class="btn btn-light action-button" role="button" href="#">Sign Up</a>
+                    </span>
+               </div>
 
-               <a href="${localeFr}"><img class="locale-icon" src='<spring:url value="/images/FR.png"/>'></a>
-               <a href="${localeEn}"><img class="locale-icon" src='<spring:url value="/images/GB.png"/>'></a>
-          </div>
+               <a class="flag" href="${localeFr}"> <img src="static/img/FR.png"/> </a>
+               <a class="flag" href="${localeEn}"> <img src="static/img/GB.png"/> </a>
+
      </nav>
+     <script src="static/js/jquery.min.header.js"></script>
+     <script src="static/bootstrap/js/bootstrap.min.header.js"></script>
 
 </header>

@@ -10,8 +10,12 @@
                 <div class="card" style="margin: 10px" style="width: 18rem;">
                     <!-- TODO Image category ? -->
                     <div class="card-body">
-                        <h5 class="card-title">Category Name</h5>
-                        <p class="card-text">Description</p>
+                        <h5 class="card-title">
+                            categoryName
+                        </h5>
+                        <p class="card-text">
+                            description
+                        </p>
                         <!-- TODO Take the ID category and print all the articles -->
                     </div>
                 </div>
