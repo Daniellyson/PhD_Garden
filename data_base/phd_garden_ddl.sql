@@ -1,4 +1,4 @@
-/*
+
 drop table translation;
 drop table language;
 drop table discount;
@@ -7,10 +7,12 @@ drop table product;
 drop table category;
 drop table customer_order;
 drop table customer;
-*/
 
-CREATE SCHEMA `phd_garden` DEFAULT CHARACTER SET utf8;
-use phd_garden;
+
+/*CREATE SCHEMA `phd_garden` DEFAULT CHARACTER SET utf8;
+use phd_garden;*/
+
+SET default_storage_engine=InnoDB;
 
 CREATE TABLE customer (
 	id int primary key auto_increment,
@@ -31,20 +33,19 @@ CREATE TABLE customer (
     house_number varchar(5) NOT NULL,
     postalcode int(5) NOT NULL,
     locality varchar(50) NOT NULL
-)ENGINE=INNODB;
+);
 
 create table customer_order (
 	id int primary key auto_increment,
     order_date date,
     
     customer_id int not null references customer(id)
-)ENGINE=INNODB;
+);
 
 create table category (
 	id int primary key auto_increment,
-    category_name varchar(30) NOT NULL
-    
-)ENGINE=INNODB;
+    category_name varchar(30) NOT NULL    
+);
 
 create table product (
 	id int primary key auto_increment,
@@ -53,7 +54,7 @@ create table product (
     description varchar(30),
     
     category_id int not null references category(id)
-)ENGINE=INNODB;
+);
 
 create table order_line (
 	id int primary key auto_increment,
@@ -62,7 +63,7 @@ create table order_line (
 
     order_line_id int not null references customer_order(id),
     product_id int not null references product(id)
-)ENGINE=INNODB;
+);
 
 create table discount (
 	id int primary key auto_increment,
@@ -72,19 +73,18 @@ create table discount (
     
     category_id int references category(id),
     product_id int references product(id)
-)ENGINE=INNODB;
+);
 
 
 create table language (
 	id int primary key auto_increment,
-    language_name varchar(30) NOT NULL
-    
-)ENGINE=INNODB;
+    language_name varchar(30) NOT NULL,
+    language_code varchar(4) NOT NULL
+);
 
 create table translation (
 	id int primary key auto_increment,
-    content varchar(30),
     
     language_id int not null references language(id),
     category_id int not null references category(id)    
-)ENGINE=INNODB;
+);
