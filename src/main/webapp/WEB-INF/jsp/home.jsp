@@ -11,10 +11,10 @@
                     <!-- TODO Image category ? -->
                     <div class="card-body">
                         <h5 class="card-title">
-                            categoryName
+                            <spring:message code="category"/>
                         </h5>
                         <p class="card-text">
-                            description
+                            <spring:message code="description"/>
                         </p>
                         <!-- TODO Take the ID category and print all the articles -->
                     </div>

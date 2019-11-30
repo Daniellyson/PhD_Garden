@@ -6,6 +6,9 @@
      <link rel="stylesheet" href="<spring:url value='static/css/Navigation-with-Button.header.css' />">
      <link rel="stylesheet" href="<spring:url value='static/css/styles.header.css' />">
 
+    <script href="<spring:url value='static/js/jquery.min.header.js'/>"></script>
+    <script href="<spring:url value='static/bootstrap/js/bootstrap.min.header.js'/>"></script>
+
      <spring:url var="localeFr" value="">
           <spring:param name="locale" value="fr"/>
      </spring:url>
@@ -37,9 +40,8 @@
 
                <a class="flag" href="${localeFr}"> <img src="static/img/FR.png"/> </a>
                <a class="flag" href="${localeEn}"> <img src="static/img/GB.png"/> </a>
-
+          </div>
      </nav>
-     <script src="static/js/jquery.min.header.js"></script>
-     <script src="static/bootstrap/js/bootstrap.min.header.js"></script>
+
 
 </header>
