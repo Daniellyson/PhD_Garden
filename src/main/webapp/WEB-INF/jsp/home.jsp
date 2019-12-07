@@ -6,6 +6,7 @@
     <div class="row">
         <!-- forEach here categories TODO-->
 
+
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="card" style="margin: 10px" style="width: 18rem;">
                     <!-- TODO Image category ? -->

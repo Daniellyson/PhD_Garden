@@ -16,6 +16,11 @@ public class CategoryService {
     @Qualifier("categoryDAO")
     private CategoryDataAccess categoryDAO;
 
+    /*@Autowired
+    public CategoryService(CategoryDAO categoryDAO) {
+        this.categoryDAO = categoryDAO;
+    }*/
+
     public Collection<Category> getAllCategories(){
         return categoryDAO.getAll();
     }
