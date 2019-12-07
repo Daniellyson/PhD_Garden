@@ -26,8 +26,8 @@
                <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
-                         <li role="presentation" class="nav-item"><a class="nav-link active text-white" href="#">First Item</a></li>
-                         <li role="presentation" class="nav-item"><a class="nav-link text-white" href="#">Second Item</a></li>
+                         <li role="presentation" class="nav-item"><a class="nav-link active text-white" href="#"><spring:message code="category"/></a></li>
+                         <li role="presentation" class="nav-item"><a class="nav-link text-white" href="#"><spring:message code="category"/></a></li>
                          <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link text-white" href="#">Dropdown </a>
                               <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">First Item</a><a role="presentation" class="dropdown-item" href="#">Second Item</a><a role="presentation" class="dropdown-item" href="#">Third Item</a></div>
                          </li>
