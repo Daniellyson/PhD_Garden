@@ -1,0 +1,36 @@
+#main-content {
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    bottom: 40px;
+    overflow:auto;
+}
+
+#category {
+    width: 100%;
+}
+
+#category-center {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body {
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 250px;
+    height: 400px;
+    float: left;
+}
+
+.card-body img {
+    border: #227c3e 1px solid;
+    margin-left: -50px;
+    width: 250px;
+    height: 350px;
+}
+
+h5 {
+    color: #0f5f25;
+}

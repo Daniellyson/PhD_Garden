@@ -15,7 +15,6 @@ import java.util.Locale;
 @RequestMapping(value="/home")
 public class HomeController {
 
-    //TODO CATEGORIES IN JSP
     @Autowired
     private CategoryService categoryService;
 
@@ -23,7 +22,7 @@ public class HomeController {
     public String home(Model model, Locale locale) {
 
         List<Category> categories = (List<Category>)categoryService.getAllCategories();
-        //TODO
+
         model.addAttribute("categories", categories);
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("title", "PhD Garden");
