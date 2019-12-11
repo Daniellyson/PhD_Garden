@@ -1,3 +1,5 @@
+DROP TRIGGER phd_garden_order;
+DROP TRIGGER phd_garden_customer; 
 
 drop table translation_product;
 drop table translation_category;
@@ -8,9 +10,6 @@ drop table product;
 drop table category;
 drop table customer_order;
 drop table customer;
-
-DROP TRIGGER phd_garden_order;
-DROP TRIGGER phd_garden_customer; 
 
 
 /*CREATE SCHEMA `phd_garden` DEFAULT CHARACTER SET utf8;
@@ -48,12 +47,14 @@ create table customer_order (
 );
 
 create table category (
-	id int primary key auto_increment
+	id int primary key auto_increment,
+    url_image varchar(30)
 );
 
 create table product (
 	id int primary key auto_increment,
     price decimal(6,2) not null,
+    url_image varchar(30),
     
     category_id int not null references category(id)
 );
