@@ -7,4 +7,6 @@ import java.util.Collection;
 public interface CategoryDataAccess {
 
     Collection<Category> getAll();
+
+    Category getById(Integer id);
 }

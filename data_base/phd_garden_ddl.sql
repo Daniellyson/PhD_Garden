@@ -1,5 +1,6 @@
 
-drop table translation;
+drop table translation_product;
+drop table translation_category;
 drop table language;
 drop table discount;
 drop table order_line;
@@ -7,6 +8,9 @@ drop table product;
 drop table category;
 drop table customer_order;
 drop table customer;
+
+DROP TRIGGER phd_garden_order;
+DROP TRIGGER phd_garden_customer; 
 
 
 /*CREATE SCHEMA `phd_garden` DEFAULT CHARACTER SET utf8;
@@ -23,6 +27,7 @@ CREATE TABLE customer (
 	enabled tinyint(1),
 	username varchar(30) NOT NULL UNIQUE,
 	password varchar(200) NOT NULL,
+    registration_date date NOT NULL,
     firstname varchar(50) NOT NULL,
     lastname varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
@@ -43,15 +48,12 @@ create table customer_order (
 );
 
 create table category (
-	id int primary key auto_increment,
-    category_name varchar(30) NOT NULL    
+	id int primary key auto_increment
 );
 
 create table product (
 	id int primary key auto_increment,
-    product_name varchar(30) NOT NULL,
     price decimal(6,2) not null,
-    description varchar(30),
     
     category_id int not null references category(id)
 );
@@ -82,9 +84,35 @@ create table language (
     language_code varchar(4) NOT NULL
 );
 
-create table translation (
-	id int primary key auto_increment,
+create table translation_category (
+	category_id int not null,
+    language_id int not null,
+    category_name varchar(30) NOT NULL,
     
-    language_id int not null references language(id),
-    category_id int not null references category(id)    
+    PRIMARY KEY (category_id, language_id)
 );
+
+create table translation_product (
+	product_id int not null,
+    language_id int not null,
+    product_name varchar(30) NOT NULL,
+    description varchar(30),
+    
+    PRIMARY KEY (product_id, language_id)
+);
+
+ALTER TABLE translation_category ADD CONSTRAINT FK_translationCategory_ProductCategory FOREIGN KEY (category_id) REFERENCES category (id);
+ALTER TABLE translation_category ADD CONSTRAINT FK_translationCategory_Language FOREIGN KEY (language_id) REFERENCES language (id);
+ALTER TABLE translation_product ADD CONSTRAINT FK_translationProduct_Product FOREIGN KEY (product_id) REFERENCES product (id);
+ALTER TABLE translation_product ADD CONSTRAINT FK_translationProduct_Language FOREIGN KEY (language_id) REFERENCES language (id);
+
+
+create TRIGGER phd_garden_order
+    before INSERT on customer_order
+    for each row
+	set new.order_date = now();
+    
+create TRIGGER phd_garden_customer
+    before INSERT on customer
+    for each row
+	set new.registration_date = now();

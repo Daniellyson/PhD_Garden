@@ -24,4 +24,9 @@ public class CategoryService {
     public Collection<Category> getAllCategories(){
         return categoryDAO.getAll();
     }
+
+    public Category loadCategory(Integer id) {
+
+        return categoryDAO.getById(id);
+    }
 }
