@@ -48,13 +48,13 @@ create table customer_order (
 
 create table category (
 	id int primary key auto_increment,
-    url_image varchar(30)
+    url_image varchar(30) unique
 );
 
 create table product (
 	id int primary key auto_increment,
     price decimal(6,2) not null,
-    url_image varchar(30),
+    url_image varchar(30) unique,
     
     category_id int not null references category(id)
 );

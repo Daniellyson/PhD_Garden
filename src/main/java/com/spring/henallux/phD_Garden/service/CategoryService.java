@@ -26,7 +26,6 @@ public class CategoryService {
     }
 
     public Category loadCategory(Integer id) {
-
         return categoryDAO.getById(id);
     }
 }

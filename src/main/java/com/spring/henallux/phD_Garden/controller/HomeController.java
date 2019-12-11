@@ -19,17 +19,19 @@ public class HomeController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public String home(@PathVariable("id") Integer id, Model model, Locale locale) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String home(Model model, Locale locale) {
 
         List<Category> categories = (List<Category>)categoryService.getAllCategories();
 
-        //TODO return categoryService.loadCategory(id)
-        model.addAttribute("currentCategory", categoryService);
+
         model.addAttribute("categories", categories);
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("title", "PhD Garden");
 
         return "integrated:home";
     }
+
+    //TODO Onclick image or Name print All categories POST
+    //model.addAttribute("currentCategory", categoryService.loadCategory(id));
 }

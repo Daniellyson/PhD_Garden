@@ -10,7 +10,7 @@ public class CategoryConverter {
     public CategoryEntity categoryModelToCategoryEntity(Category category) {
         CategoryEntity categoryEntity = new CategoryEntity();
 
-        categoryEntity.setCategoryName(category.getName());
+        categoryEntity.setUrlImage(category.getUrlImage());
 
         return categoryEntity;
     }
@@ -18,7 +18,7 @@ public class CategoryConverter {
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity) {
         Category category = new Category();
 
-        category.setName(categoryEntity.getCategoryName());
+        category.setUrlImage(categoryEntity.getUrlImage());
 
         return  category;
     }

@@ -1,40 +1,29 @@
-INSERT INTO category (category_name)
-VALUES ('Flowers');
 
-INSERT INTO category (category_name) 
-VALUES ('Vegetables');
-
-INSERT INTO category (category_name)
-VALUES ('Trees');
-
-INSERT INTO category (category_name) 
-VALUES ('Tools');
 /*CATEGORY*/
-/*INSERT INTO category (category_name)
+INSERT INTO category (url_image)
 VALUES ('Flowers');
 
-INSERT INTO category (category_name) 
+INSERT INTO category (url_image) 
 VALUES ('Vegetables');
 
-INSERT INTO category (category_name)
+INSERT INTO category (url_image)
 VALUES ('Trees');
 
-INSERT INTO category (category_name) 
-VALUES ('Tools');*/
+INSERT INTO category (url_image) 
+VALUES ('Tools');
 
+/*LANGUAGE*/
 
-/*LANGUAGE*//*
-INSERT INTO language (language_name, language_code) 
-VALUES ('Français', 'fr');
+INSERT INTO language VALUES (1, 'Français', 'fr');
+INSERT INTO language VALUES (2, 'English', 'en');
 
-INSERT INTO language (language_name, language_code) 
-VALUES ('English', 'en');*/
+/*TRANSLATION CATEGORY*/
 
-
-/*TRANSLATION*//*
-INSERT INTO translation (language_id, category_id) 
-VALUES 
-	(1, 1), (2, 1),
-    (1, 2), (2, 2),
-    (1, 3), (2, 3),
-    (1, 4), (2, 4);*/
+INSERT INTO translation_category VALUES (1, 1, 'Flowers');
+INSERT INTO translation_category VALUES (1, 2, 'Fleurs');
+INSERT INTO translation_category VALUES (2, 1, 'Vegetables');
+INSERT INTO translation_category VALUES (2, 2, 'Légumes');
+INSERT INTO translation_category VALUES (3, 1, 'Trees');
+INSERT INTO translation_category VALUES (3, 2, 'Arbres');
+INSERT INTO translation_category VALUES (4, 1, 'Tools');
+INSERT INTO translation_category VALUES (4, 2, 'Outils');
