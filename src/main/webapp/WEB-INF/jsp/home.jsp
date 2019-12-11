@@ -1,27 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="include/importTags.jsp"%>
 
+<head>
+    <link rel="stylesheet" href="<spring:url value='static/css/home.css' />">
+</head>
 
-<div class="container">
-    <div class="row">
-        <!-- forEach here categories TODO-->
 
 
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="card" style="margin: 10px" style="width: 18rem;">
-                    <!-- TODO Image category ? -->
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <spring:message code="category"/>
-                        </h5>
-                        <p class="card-text">
-                            <spring:message code="description"/>
-                        </p>
-                        <!-- TODO Take the ID category and print all the articles -->
-                    </div>
-                </div>
+<div id="category">
+    <div id="category-center">
+        <core:forEach items="${categories}" var="category">
+            <div class="card-body">
+                <h5 class="card-title">
+                        ${category.getUrlImage()}
+                </h5>
+                <img class="pics" src="static/img/${category.getUrlImage()}.jpg" />
             </div>
-
-        <!--end forEach-->
+        </core:forEach>
     </div>
 </div>

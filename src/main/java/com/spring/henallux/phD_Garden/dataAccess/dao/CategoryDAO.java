@@ -27,8 +27,11 @@ public class CategoryDAO implements CategoryDataAccess {
 
     @Override
     public Collection<Category> getAll() {
-
         return categoryRepository.findAll().stream().map(categoryConverter::categoryEntityToCategoryModel).collect(Collectors.toList());
+    }
 
+    @Override
+    public Category getById(Integer id) {
+        return categoryConverter.categoryEntityToCategoryModel(categoryRepository.findById(id).orElse(null));
     }
 }

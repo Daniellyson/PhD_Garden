@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {
 
-    private Language language;
-    private String name;
+    private Integer id;
+    private String urlImage;
+    private List<TranslationCategory> translationCategory;
 }
