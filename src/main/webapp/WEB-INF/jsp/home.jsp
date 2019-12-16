@@ -16,8 +16,9 @@
                 <h5 class="card-title">
                     ${category.getUrlImage()}
                 </h5>
+                <img src="static/img/${category.getUrlImage()}.jpg" />
             </div>
-            <img class="pics" src="static/img/${category.getUrlImage()}.jpg" />
+
         </core:forEach>
     </div>
 </div>

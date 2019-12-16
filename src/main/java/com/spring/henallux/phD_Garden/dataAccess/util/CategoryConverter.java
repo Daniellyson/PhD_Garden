@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 @Component
 public class CategoryConverter {
-/*
+
     @Autowired
     private LanguageConverter languageConverter;
 
-    public Category productCategoryEntityToProductCategoryModel(CategoryEntity categoryEntity) {
+    public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity) {
         Category category = new Category();
 
         category.setId(categoryEntity.getId());
@@ -24,7 +24,7 @@ public class CategoryConverter {
                 .collect(Collectors.toList()));
 
         return category;
-    }*/
+    }
 
     public CategoryEntity categoryModelToCategoryEntity(Category category) {
         CategoryEntity categoryEntity = new CategoryEntity();
@@ -34,11 +34,11 @@ public class CategoryConverter {
         return categoryEntity;
     }
 
-    public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity) {
+    /*public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity) {
         Category category = new Category();
 
         category.setUrlImage(categoryEntity.getUrlImage());
 
         return  category;
-    }
+    }*/
 }
