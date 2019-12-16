@@ -24,7 +24,6 @@ public class HomeController {
 
         List<Category> categories = (List<Category>)categoryService.getAllCategories();
 
-
         model.addAttribute("categories", categories);
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("title", "PhD Garden");
