@@ -20,6 +20,6 @@ public class CategoryEntity {
     @Column(name = "url_image")
     private String urlImage;
 
-    @OneToMany(mappedBy = "categoryEntity")
+    @OneToMany(mappedBy = "categoryEntityID")
     private List<TranslationCategoryEntity> translationCategoryEntities;
 }

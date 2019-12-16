@@ -9,13 +9,16 @@
 
 <div id="category">
     <div id="category-center">
+        <h2> <spring:message code="category" /></h2>
         <core:forEach items="${categories}" var="category">
             <div class="card-body">
+
                 <h5 class="card-title">
-                        ${category.getUrlImage()}
+                    ${category.getUrlImage()}
                 </h5>
                 <img class="pics" src="static/img/${category.getUrlImage()}.jpg" />
             </div>
+
         </core:forEach>
     </div>
 </div>
