@@ -31,7 +31,4 @@ public class HomeController {
 
         return "integrated:home";
     }
-
-    //TODO Onclick image or Name print All categories POST
-    //model.addAttribute("currentCategory", categoryService.loadCategory(id));
 }
