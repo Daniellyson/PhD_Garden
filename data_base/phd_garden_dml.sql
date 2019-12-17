@@ -14,8 +14,9 @@ VALUES ('Tools');
 
 /*LANGUAGE*/
 
-INSERT INTO language VALUES (1, 'Français', 'fr');
-INSERT INTO language VALUES (2, 'English', 'en');
+INSERT INTO language VALUES (1, 'English', 'en');
+INSERT INTO language VALUES (2, 'Français', 'fr');
+
 
 /*TRANSLATION CATEGORY*/
 

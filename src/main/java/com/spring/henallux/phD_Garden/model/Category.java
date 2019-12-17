@@ -13,5 +13,6 @@ public class Category {
 
     private Integer id;
     private String urlImage;
+
     private List<TranslationCategory> translationCategory;
 }
