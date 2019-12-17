@@ -18,7 +18,8 @@ public class CategoryConverter {
         Category category = new Category();
 
         category.setId(categoryEntity.getId());
-        category.setTranslationCategory(categoryEntity.getTranslationCategoryEntities()//translationCategoryEntity.getCategoryEntity().getLanguageEntity()
+        category.setUrlImage(categoryEntity.getUrlImage());
+        category.setTranslationCategory(categoryEntity.getTranslationCategoryEntities()
                 .stream()
                 .map(translationCategoryEntity -> new TranslationCategory(languageConverter.languageEntityToLanguageModel(translationCategoryEntity.getLanguageEntityID()), translationCategoryEntity.getCategory_name()))
                 .collect(Collectors.toList()));
@@ -33,12 +34,4 @@ public class CategoryConverter {
 
         return categoryEntity;
     }
-
-    /*public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity) {
-        Category category = new Category();
-
-        category.setUrlImage(categoryEntity.getUrlImage());
-
-        return  category;
-    }*/
 }
