@@ -11,14 +11,16 @@
     <div id="category-center">
         <h2> <spring:message code="category" /></h2>
         <core:forEach items="${categories}" var="category">
-            <div class="card-body">
-
-                <h5 class="card-title">
-                    ${category.getUrlImage()}
-                </h5>
-                <img src="static/img/${category.getUrlImage()}.jpg" />
-            </div>
-
+            <core:forEach items="${category.getTranslationCategory()}" var="translation">
+                <core:if test="${translation.language.code==locale}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            ${translation.getName()}
+                        </h5>
+                        <img class="pics" src="static/img/${category.getUrlImage()}.jpg" />
+                    </div>
+                </core:if>
+            </core:forEach>
         </core:forEach>
     </div>
 </div>
