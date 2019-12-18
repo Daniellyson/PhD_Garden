@@ -97,7 +97,7 @@ create table translation_product (
 	product_id int not null,
     language_id int not null,
     product_name varchar(30) NOT NULL,
-    description varchar(30),
+    description varchar(150),
     
     PRIMARY KEY (product_id, language_id)
 );
