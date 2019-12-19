@@ -55,13 +55,14 @@ create table product (
 	id int primary key auto_increment,
     price decimal(6,2) not null,
     url_image varchar(30) unique,
+    stock int(10),
     
     category_id int not null references category(id)
 );
 
 create table order_line (
 	id int primary key auto_increment,
-    quantity int(2) not null,
+    quantity int(10) not null,
     unit_price decimal(6,2) not null,
 
     order_line_id int not null references customer_order(id),

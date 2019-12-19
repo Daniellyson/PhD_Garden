@@ -14,6 +14,6 @@ import org.springframework.stereotype.Controller;
 @NoArgsConstructor
 @Controller
 public class BaseController {
-
+    @Autowired
     private MessageSource messageSource;
 }

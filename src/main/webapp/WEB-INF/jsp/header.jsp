@@ -30,7 +30,7 @@
                                    <core:forEach items="${categories}" var="category">
                                         <core:forEach items="${category.getTranslationCategory()}" var="translation">
                                              <core:if test="${translation.language.code==locale}">
-                                                  <a role="presentation" class="dropdown-item" href="#">${translation.getName()}</a>
+                                                  <a role="presentation" class="dropdown-item" href="/phD_Garden/products/${category.id}">${translation.getName()}</a>
                                              </core:if>
                                         </core:forEach>
                                    </core:forEach>
@@ -38,8 +38,8 @@
                          </li>
                     </ul>
                     <span class="navbar-text actions">
-                         <a class="text-white login" href="#">Log In</a>
-                         <a class="btn btn-light action-button" role="button" href="#">Sign Up</a>
+                         <a class="text-white login" href="#"> <spring:message code="logIn" /> </a>
+                         <a class="btn btn-light action-button" role="button" href="#"> <spring:message code="signUp" /> </a>
                     </span>
                </div>
 

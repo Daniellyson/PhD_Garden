@@ -34,25 +34,25 @@ INSERT INTO translation_category VALUES (4, 2, 'Outils');
 
 /*PRODUCTS*/
 
-INSERT INTO product (category_id, price) VALUES (2, 0.73);
+INSERT INTO product (category_id, price, stock) VALUES (2, 1.9, 30);
 
-INSERT INTO product (category_id, price) VALUES (4, 20.83);
+INSERT INTO product (category_id, price, stock) VALUES (4, 20.83, 20);
 
-INSERT INTO product (category_id, price) VALUES (2, 0.25);
-INSERT INTO product (category_id, price) VALUES (2, 0.42);
-INSERT INTO product (category_id, price) VALUES (2, 0.62);
+INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 100);
+INSERT INTO product (category_id, price, stock) VALUES (2, 0.42, 30);
+INSERT INTO product (category_id, price, stock) VALUES (2, 0.62, 25);
 
-INSERT INTO product (category_id, price) VALUES (1, 8.5);
-INSERT INTO product (category_id, price) VALUES (1, 4);
+INSERT INTO product (category_id, price, stock) VALUES (1, 8.5, 15);
+INSERT INTO product (category_id, price, stock) VALUES (1, 4, 40);
 
-INSERT INTO product (category_id, price) VALUES (3, 15.25);
-INSERT INTO product (category_id, price) VALUES (3, 21);
-INSERT INTO product (category_id, price) VALUES (3, 13.75);
+INSERT INTO product (category_id, price, stock) VALUES (3, 15.25, 15);
+INSERT INTO product (category_id, price, stock) VALUES (3, 21, 7);
+INSERT INTO product (category_id, price, stock) VALUES (3, 13.75, 10);
 
 
-INSERT INTO product (category_id, price) VALUES (4, 3.6);
-INSERT INTO product (category_id, price) VALUES (4, 8);
-INSERT INTO product (category_id, price) VALUES (4, 7.75);
+INSERT INTO product (category_id, price, stock) VALUES (4, 3.6, 20);
+INSERT INTO product (category_id, price, stock) VALUES (4, 8, 30);
+INSERT INTO product (category_id, price, stock) VALUES (1, 7.75, 12);
 
 
 
