@@ -1,5 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
+import com.spring.henallux.phD_Garden.model.Category;
+import com.spring.henallux.phD_Garden.model.TranslationCategory;
 import com.spring.henallux.phD_Garden.service.CategoryService;
 import com.spring.henallux.phD_Garden.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,6 @@ import java.util.Locale;
 public class ProductController extends BaseController {
 
     @Autowired
-    private CategoryService categoryService;
-    @Autowired
     private ProductService productService;
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
@@ -25,8 +25,9 @@ public class ProductController extends BaseController {
 
         model.addAttribute("title", getMessageSource().getMessage("productbyCategory", null, locale));
         model.addAttribute("locale", locale.getLanguage());
-        model.addAttribute("currentCategory", categoryService.loadCategory(id));
+        model.addAttribute("currentCategory", getCategoryService().loadCategory(id));
         model.addAttribute("products", productService.loadAllProductsByCategory(id));
+        model.addAttribute("categories", categories());
 
         return "integrated:product";
     }
