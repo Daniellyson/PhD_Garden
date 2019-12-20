@@ -16,12 +16,12 @@ public class TranslationCategoryEntity implements Serializable {
     @EmbeddedId
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private CategoryEntity categoryEntityID;
+    private CategoryEntity translationCategoryEntityID;
 
     @EmbeddedId
     @ManyToOne
     @JoinColumn(name = "language_id")
-    private LanguageEntity languageEntityID;
+    private LanguageEntity translationCategoryLanguageEntityID;
 
     private String category_name;
 }

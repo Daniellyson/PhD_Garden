@@ -19,9 +19,11 @@ public class CategoryConverter {
 
         category.setId(categoryEntity.getId());
         category.setUrlImage(categoryEntity.getUrlImage());
-        category.setTranslationCategory(categoryEntity.getTranslationCategoryEntities()
+        category.setTranslationCategory(categoryEntity.getTranslationCategoryEntity()
                 .stream()
-                .map(translationCategoryEntity -> new TranslationCategory(languageConverter.languageEntityToLanguageModel(translationCategoryEntity.getLanguageEntityID()), translationCategoryEntity.getCategory_name()))
+                .map(translationCategoryEntity -> new TranslationCategory
+                        (languageConverter.languageEntityToLanguageModel(translationCategoryEntity.getTranslationCategoryLanguageEntityID()),
+                                translationCategoryEntity.getCategory_name()))
                 .collect(Collectors.toList()));
 
         return category;

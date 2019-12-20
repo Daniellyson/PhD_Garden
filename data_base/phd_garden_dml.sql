@@ -32,27 +32,27 @@ INSERT INTO translation_category VALUES (4, 2, 'Outils');
 
 
 
-/*Doing products
+/*PRODUCTS*/
 
-INSERT INTO product (category_id, price) VALUES (2, 0.73);
+INSERT INTO product (category_id, price, stock) VALUES (2, 1.9, 30);
 
-INSERT INTO product (category_id, price) VALUES (4, 20.83);
+INSERT INTO product (category_id, price, stock) VALUES (4, 20.83, 20);
 
-INSERT INTO product (category_id, price) VALUES (2, 1.45);
-INSERT INTO product (category_id, price) VALUES (2, 0.42);
-INSERT INTO product (category_id, price) VALUES (2, 0.62);
+INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 100);
+INSERT INTO product (category_id, price, stock) VALUES (2, 0.42, 30);
+INSERT INTO product (category_id, price, stock) VALUES (2, 0.62, 25);
 
-INSERT INTO product (category_id, price) VALUES (1, 1.67);
-INSERT INTO product (category_id, price) VALUES (1, 0.96);
+INSERT INTO product (category_id, price, stock) VALUES (1, 8.5, 15);
+INSERT INTO product (category_id, price, stock) VALUES (1, 4, 40);
 
-INSERT INTO product (category_id, price) VALUES (3, 1.36);
-INSERT INTO product (category_id, price) VALUES (3, 0.63);
-INSERT INTO product (category_id, price) VALUES (3, 0.20);
+INSERT INTO product (category_id, price, stock) VALUES (3, 15.25, 15);
+INSERT INTO product (category_id, price, stock) VALUES (3, 21, 7);
+INSERT INTO product (category_id, price, stock) VALUES (3, 13.75, 10);
 
 
-INSERT INTO product (category_id, price) VALUES (4, 0.60);
-INSERT INTO product (category_id, price) VALUES (4, 0.39);
-INSERT INTO product (category_id, price) VALUES (4, 0.31);
+INSERT INTO product (category_id, price, stock) VALUES (4, 3.6, 20);
+INSERT INTO product (category_id, price, stock) VALUES (4, 8, 30);
+INSERT INTO product (category_id, price, stock) VALUES (1, 7.75, 12);
 
 
 
@@ -87,4 +87,4 @@ INSERT INTO  translation_product VALUES (12, 2, 'Rateau', 'Un rateau pour prépa
 INSERT INTO  translation_product VALUES (12, 1, 'Rake', 'A rake to prepare your land');
 
 INSERT INTO  translation_product VALUES (13, 2, 'Mufliers', 'Cultivées en serre en Wallonie de coulor blanche');
-INSERT INTO  translation_product VALUES (13, 1, 'Dragon flowers', 'Cultivated in Wallonia, white color'); */
+INSERT INTO  translation_product VALUES (13, 1, 'Dragon flowers', 'Cultivated in Wallonia, white color');
