@@ -23,6 +23,7 @@ public class ProductEntity {
 
     private Double price;
     private Integer stock;
+    private String url_image;
 
     @OneToMany(mappedBy = "translationProductEntityID")
     private List<TranslationProductEntity> translationProductsEntity;

@@ -42,8 +42,8 @@ INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 100);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.42, 30);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.62, 25);
 
-INSERT INTO product (category_id, price, stock) VALUES (1, 8.5, 15);
-INSERT INTO product (category_id, price, stock) VALUES (1, 4, 40);
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 8.5, 15, "rose");
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 4, 40, "clove-pink");
 
 INSERT INTO product (category_id, price, stock) VALUES (3, 15.25, 15);
 INSERT INTO product (category_id, price, stock) VALUES (3, 21, 7);
@@ -52,7 +52,8 @@ INSERT INTO product (category_id, price, stock) VALUES (3, 13.75, 10);
 
 INSERT INTO product (category_id, price, stock) VALUES (4, 3.6, 20);
 INSERT INTO product (category_id, price, stock) VALUES (4, 8, 30);
-INSERT INTO product (category_id, price, stock) VALUES (1, 7.75, 12);
+
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, "dragon-flower");
 
 
 

@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="<core:url value="/static/css/styles.footer.css" />">
     <!--HOME-->
     <link rel="stylesheet" href="<core:url value="/static/css/home.css" />">
+    <!--PRODUCT-->
+    <link rel="stylesheet" href="<core:url value="/static/css/product.css" />">
 
 </head>
 <body>
