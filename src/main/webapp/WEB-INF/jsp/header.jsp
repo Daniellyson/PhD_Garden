@@ -31,6 +31,12 @@
                               </div>
                          </li>
                     </ul>
+                    <div id="shopping-cart">
+                         <a href="/shopping-cart"><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
+                         <p>
+                              <spring:message code="productAmount"/> : ${shoppingCart.size()}
+                         </p>
+                    </div>
                     <span class="navbar-text actions">
                          <a class="text-white login" href="#"> <spring:message code="logIn" /> </a>
                          <a class="btn btn-light action-button" role="button" href="#"> <spring:message code="signUp" /> </a>

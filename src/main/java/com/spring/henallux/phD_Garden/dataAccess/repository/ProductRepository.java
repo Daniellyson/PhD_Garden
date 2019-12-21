@@ -8,8 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
-    //TODO TO FIX @QUERY
-
     @Query(value = "SELECT p FROM ProductEntity p WHERE p.category.id = :id")
     List<ProductEntity> findAllByCategoryId(@Param("id") Integer id);
 }

@@ -24,6 +24,7 @@ public class ProductConverter {
             product.setId(productEntity.getId());
             product.setPrice(productEntity.getPrice());
             product.setStock(productEntity.getStock());
+            product.setUrl_image(productEntity.getUrl_image());
             product.setTranslationProducts(productEntity.getTranslationProductsEntity()
                     .stream()
                     .map(translationProductEntity -> new TranslationProduct
