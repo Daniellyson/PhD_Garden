@@ -31,6 +31,11 @@
                               </div>
                          </li>
                     </ul>
+                    <div id="shopping-cart">
+                         <p>
+                              <a href="/shopping-cart"><i class="icon ion-ios-cart"></i></a> <spring:message code="productAmount"/> :
+                         </p>
+                    </div>
                     <span class="navbar-text actions">
                          <a class="text-white login" href="#"> <spring:message code="logIn" /> </a>
                          <a class="btn btn-light action-button" role="button" href="#"> <spring:message code="signUp" /> </a>
