@@ -1,6 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.model.Category;
+import com.spring.henallux.phD_Garden.model.Product;
 import com.spring.henallux.phD_Garden.model.TranslationCategory;
 import com.spring.henallux.phD_Garden.service.CategoryService;
 import com.spring.henallux.phD_Garden.service.ProductService;

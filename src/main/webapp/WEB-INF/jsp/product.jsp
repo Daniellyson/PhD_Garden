@@ -15,7 +15,7 @@
     <core:forEach items="${product.translationProducts}" var="translation">
         <core:if test="${translation.language.code==locale}">
             <div class="product-container">
-                <a class="product-index-link" href="/products/${product.id}"><p class="product-name">${translation.name}</p></a>
+                <a class="product-index-link" href="/products/${product.id}"><p class="product-name">${translation.product_name}</p></a>
                 <p class="product-price"><spring:message code="price"/> : ${product.price} €</p>
                 <core:if test="${product.isAvailable()}">
                     <form class="product-add-form" action="/shopping-cart/add/${product.id}" method="get">
