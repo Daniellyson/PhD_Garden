@@ -16,8 +16,11 @@
                         <img class="pics" src="<core:url value='/static/img/${product.url_image}.jpg'/>" />
                     </core:if>
                 </div>
+                <details>
+                    <summary class="product-name">${translation.product_name}</summary>
+                    <p class="product-description">${translation.description}</p>
+                </details>
 
-                <p class="product-name">${translation.product_name}</p>
 
                 <p class="product-price"> <spring:message code="price"/> : ${product.price} €</p>
                 <core:if test="${product.isAvailable()}">

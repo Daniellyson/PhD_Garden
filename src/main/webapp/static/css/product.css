@@ -23,7 +23,12 @@
 .product-name {
     text-align: left;
     font-weight: bold;
-    width: 50%;
+    width: 75%;
+
+}
+.product-description {
+    text-align: left;
+    width: 100%;
 }
 
 .product-price {
