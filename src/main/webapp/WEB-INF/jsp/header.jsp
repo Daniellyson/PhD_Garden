@@ -32,8 +32,9 @@
                          </li>
                     </ul>
                     <div id="shopping-cart">
+                         <a href="/shopping-cart"><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
                          <p>
-                              <a href="/shopping-cart"><i class="icon ion-ios-cart"></i></a> <spring:message code="productAmount"/> :
+                              <spring:message code="productAmount"/> : ${shoppingCart.size()}
                          </p>
                     </div>
                     <span class="navbar-text actions">

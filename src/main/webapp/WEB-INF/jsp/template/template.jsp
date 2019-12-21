@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.header.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/Navigation-with-Button.header.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/styles.header.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
     <!--FOOTER-->
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.footer.css" />">
     <link rel="stylesheet" href="<core:url value="/static/fonts/ionicons.min.css" />">

@@ -1,0 +1,25 @@
+#shopping-cart {
+    display:inline-block;
+    padding: 0 10px;
+    border-right: 1px solid rgb(29, 157, 147);
+    border-left: 1px solid rgb(29, 157, 147);
+    margin-right: 10px;
+}
+
+#shopping-cart img {
+    display: inline-block;
+    margin-right: 3px;
+    height: 75px;
+    padding-top: 5px;
+    width: 75px;
+    margin-left: 0px;
+}
+
+#shopping-cart p {
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    margin-top: 22px;
+    vertical-align: top;
+}
