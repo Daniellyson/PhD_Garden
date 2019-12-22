@@ -1,10 +1,6 @@
 #shopping-cart {
-    display:inline-block;
     padding: 0 10px;
-    border-right: 1px solid rgb(29, 157, 147);
-    border-left: 1px solid rgb(29, 157, 147);
     margin-right: 10px;
-
 }
 
 #shopping-cart img {
