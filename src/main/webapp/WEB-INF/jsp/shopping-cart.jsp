@@ -17,16 +17,16 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="p-2 px-3 text-uppercase">Product</div>
+                                        <div class="p-2 px-3 text-uppercase"> <spring:message code="product"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Price</div>
+                                        <div class="py-2 text-uppercase"> <spring:message code="price"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Quantity</div>
+                                        <div class="py-2 text-uppercase"> <spring:message code="quantity"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Remove</div>
+                                        <div class="py-2 text-uppercase"> <spring:message code="remove"/> </div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -75,7 +75,6 @@
                             </table>
                         </div>
                         <!-- End -->
-
                     </div>
                     <div class="col-lg-6">
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
