@@ -29,7 +29,7 @@
 
 
                         <input type="number" name="quantity" value="1" required min="1" max="${product.stock}"
-                               oninvalid="this.setCustomValidity('${quantityError}')"
+                               oninvalid="this.setCustomValidity('<spring:message code="errorQuantity"/>' + ' (${product.stock})')"
                                oninput="this.setCustomValidity('')"/>
 
                         <input type="hidden" name="origin" value="/categories/${currentCategory.id}"/>

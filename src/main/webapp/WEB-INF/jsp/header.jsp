@@ -32,7 +32,7 @@
                          </li>
                     </ul>
                     <div id="shopping-cart">
-                         <a href="/shopping-cart"><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
+                         <a href="<core:url value='/shopping-cart' />" ><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
                          <p>
                               <spring:message code="productAmount"/> : ${shoppingCart.size()}
                          </p>
@@ -45,6 +45,7 @@
 
                <a class="flag" href="${localeFr}"> <img src="<core:url value='/static/img/FR.png'/>"/> </a>
                <a class="flag" href="${localeEn}"> <img src="<core:url value='/static/img/GB.png'/>"/> </a>
+
           </div>
 
           <script src="static/js/jquery.min.header.js"></script>

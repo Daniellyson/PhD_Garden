@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.header.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/Navigation-with-Button.header.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/styles.header.css" />">
-    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart-header.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/header.css" />">
     <!--FOOTER-->
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.footer.css" />">
     <link rel="stylesheet" href="<core:url value="/static/fonts/ionicons.min.css" />">
@@ -31,6 +32,10 @@
     <link rel="stylesheet" href="<core:url value="/static/css/home.css" />">
     <!--PRODUCT-->
     <link rel="stylesheet" href="<core:url value="/static/css/product.css" />">
+    <!--SHOPPING-CART-->
+    <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.shopping-cart.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.shopping-cart.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/styles.shopping-cart.css" />">
 
 </head>
 <body>

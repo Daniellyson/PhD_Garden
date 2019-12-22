@@ -57,6 +57,8 @@ INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, 
 
 
 
+/*TRANSLATION_PRODUCT*/
+
 INSERT INTO  translation_product VALUES (1, 2, 'Tomate', 'Cultivées en serre en Wallonie');
 INSERT INTO  translation_product VALUES (1, 1, 'Tomato', 'Cultivated in a greenhouse in Wallonia');
 
