@@ -10,9 +10,9 @@
                 <core:if test="${translation.language.code==locale}">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="/phD_Garden/products/${category.id}" >${translation.getName()}</a>
+                            <a href="/phD_Garden/products_Category/${category.id}" >${translation.getName()}</a>
                         </h5>
-                        <a href="/phD_Garden/products/${category.id}"><img class="pics" src="static/img/${category.getUrlImage()}.jpg" /></a>
+                        <a href="/phD_Garden/products_Category/${category.id}"><img class="pics" src="static/img/${category.getUrlImage()}.jpg" /></a>
                     </div>
                 </core:if>
             </core:forEach>

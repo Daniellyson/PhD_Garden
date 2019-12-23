@@ -24,7 +24,7 @@
                               <core:forEach items="${categories}" var="category">
                                    <core:forEach items="${category.translationCategory}" var="translation">
                                         <core:if test="${translation.language.code==locale}">
-                                             <a role="presentation" class="dropdown-item" href="<core:url value='/products/${category.id}'/>">${translation.name}</a>
+                                             <a role="presentation" class="dropdown-item" href="<core:url value='/products_Category/${category.id}'/>">${translation.name}</a>
                                         </core:if>
                                    </core:forEach>
                               </core:forEach>
@@ -44,7 +44,7 @@
 
                <div id="shopping-cart">
                     <a href="<core:url value='/shopping-cart' />" ><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
-                    <p>
+                    <p id="paragraphCart">
                          <spring:message code="productAmount"/> : ${shoppingCart.size()}
                     </p>
                </div>

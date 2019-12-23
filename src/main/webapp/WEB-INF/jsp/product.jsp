@@ -24,7 +24,7 @@
 
                 <p class="product-price"> <spring:message code="price"/> : ${product.price} €</p>
                 <core:if test="${product.isAvailable()}">
-                    <form class="product-add-form" action="/shopping-cart/add/${product.id}" method="get">
+                    <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="post">
                         <spring:message code="quantity"/> :
 
 
@@ -32,8 +32,8 @@
                                oninvalid="this.setCustomValidity('<spring:message code="errorQuantity"/>' + ' (${product.stock})')"
                                oninput="this.setCustomValidity('')"/>
 
-                        <input type="hidden" name="origin" value="/categories/${currentCategory.id}"/>
-                        <button type="submit"><spring:message code="addToBasket" /></button>
+                        <input type="hidden" name="origin" value="/products_Category/${currentCategory.id}"/>
+                        <button type="submit" onclick="appear()"><spring:message code="addToBasket" /></button>
                     </form>
                 </core:if>
                 <core:if test="${!product.isAvailable()}">

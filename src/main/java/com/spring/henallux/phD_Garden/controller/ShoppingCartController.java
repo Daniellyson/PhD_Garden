@@ -5,10 +5,12 @@ import com.spring.henallux.phD_Garden.model.Category;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.model.TranslationCategory;
+import com.spring.henallux.phD_Garden.service.ProductService;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,6 +23,9 @@ public class ShoppingCartController extends BaseController{
     @Autowired
     private ShoppingCartService shoppingCartService;
 
+    @Autowired
+    private ProductService productService;
+
     @RequestMapping(method= RequestMethod.GET)
     public String shoppingCart(@ModelAttribute(value = "shoppingCart") HashMap<Product, Integer> shoppingCart, Model model, Locale locale) {
         model.addAttribute("title", getMessageSource().getMessage("shoppingCart", null, locale));
@@ -31,18 +36,42 @@ public class ShoppingCartController extends BaseController{
         return "integrated:shopping-cart";
     }
 
-    @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)
+    @RequestMapping(value = "/add/{id}", method= RequestMethod.POST)
     public String shoppingCart(
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
             @RequestParam("origin") String origin,
             @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
-            //@ModelAttribute(value = Constants.MESSAGE) MessageQueue messageQueue,
+            Model model,
             Locale locale) {
-        //Product product = productService.loadProduct(id);
 
+        System.out.println("INSIDE : shoppingCart Controller");
+        //TODO appear message success
+        model.addAttribute("OK", false);
+        model.addAttribute("PLUS", true);
 
+        try {
+            Product product = productService.loadProduct(id);
+            System.out.println(shoppingCart.get(product));
+            if(shoppingCart.get(product) != null) {
+                shoppingCart.put(product, shoppingCart.get(product) + quantity);
 
+                model.addAttribute("OK", true);
+                //TODO IF CUSTOMER LOGGED UPDATE ORDER
+
+            } else {
+                model.addAttribute("OK", true);
+                shoppingCart.put(product, quantity);
+                System.out.println("SIZE : " + shoppingCart.size());
+                System.out.println("PRODUCT : " + shoppingCart.get(product.getId()));
+                //TODO IF CUSTOMER LOGGED UPDATE ORDER
+            }
+        } catch (Exception exception) {
+            //TODO
+            System.out.println("EXCEPTION : " + exception);
+            return "redirect:" + origin;
+        }
+        System.out.println("OUT OF TRY CATCH");
         return "redirect:" + origin;
     }
 }

@@ -16,6 +16,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+
+    <!--TEMPLATE-->
+    <link rel="stylesheet" href="<core:url value="/static/css/template.css" />">
     <!--HEADER-->
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.header.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/Navigation-with-Button.header.css" />">
@@ -37,9 +40,26 @@
     <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.shopping-cart.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/styles.shopping-cart.css" />">
 
+    <!--JS-->
+    <link rel="stylesheet" href="<core:url value="/static/js/showMessageSuccess.js" />">
+
 </head>
 <body>
     <tiles:insertAttribute name="header" />
+
+    <div id="messages">
+        <core:if test="${OK}">
+            <core:choose>
+                <core:when test="${PLUS}">
+                    <p class="info-message" style="display:none;"><spring:message code="successAddProduct" /></p>
+                </core:when>
+                <core:otherwise>
+                    <p class="info-message" style="display:none;"><spring:message code="successWithdrawProduct" /></p>
+                </core:otherwise>
+            </core:choose>
+            <p class="info-message">TEST TAMPLATE</p>
+        </core:if>
+    </div>
 
     <div id="main-content">
         <tiles:insertAttribute name="main-content" />
