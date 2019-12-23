@@ -20,7 +20,7 @@
                                         <div class="p-2 px-3 text-uppercase"> <spring:message code="product"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase"> <spring:message code="price"/> </div>
+                                        <div class="py-2 text-uppercase"> <spring:message code="price"/> &nbsp;&nbsp;</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase"> <spring:message code="quantity"/> </div>

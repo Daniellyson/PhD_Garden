@@ -36,6 +36,7 @@ public class BaseController {
         return new HashMap<Product, Integer>();
     }
 
+
     public List<Category> categories() {
        return (List<Category>)categoryService.getAllCategories();
     }

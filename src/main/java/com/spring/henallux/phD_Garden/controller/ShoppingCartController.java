@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value="/shopping-cart")
@@ -45,14 +46,13 @@ public class ShoppingCartController extends BaseController{
             Model model,
             Locale locale) {
 
-        System.out.println("INSIDE : shoppingCart Controller");
         //TODO appear message success
         model.addAttribute("OK", false);
         model.addAttribute("PLUS", true);
 
         try {
             Product product = productService.loadProduct(id);
-            System.out.println(shoppingCart.get(product));
+
             if(shoppingCart.get(product) != null) {
                 shoppingCart.put(product, shoppingCart.get(product) + quantity);
 
@@ -62,16 +62,16 @@ public class ShoppingCartController extends BaseController{
             } else {
                 model.addAttribute("OK", true);
                 shoppingCart.put(product, quantity);
-                System.out.println("SIZE : " + shoppingCart.size());
-                System.out.println("PRODUCT : " + shoppingCart.get(product.getId()));
+
                 //TODO IF CUSTOMER LOGGED UPDATE ORDER
             }
+
         } catch (Exception exception) {
             //TODO
-            System.out.println("EXCEPTION : " + exception);
             return "redirect:" + origin;
         }
-        System.out.println("OUT OF TRY CATCH");
+
+
         return "redirect:" + origin;
     }
 }

@@ -45,7 +45,13 @@
                <div id="shopping-cart">
                     <a href="<core:url value='/shopping-cart' />" ><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
                     <p id="paragraphCart">
-                         <spring:message code="productAmount"/> : ${shoppingCart.size()}
+                         <core:set var="itemsTotal" value="${0}" />
+                         <core:forEach items="${shoppingCart}" var="product">
+                              <core:set var="itemsTotal" value="${itemsTotal + product.value}" />
+                         </core:forEach>
+                         <spring:message code="productAmount"/> : ${
+                            itemsTotal
+                         }
                     </p>
                </div>
           </div>
