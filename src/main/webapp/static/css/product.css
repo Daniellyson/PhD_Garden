@@ -20,10 +20,10 @@
     margin-top:16px;
 }
 
-.product-name {
+summary.product-name {
     text-align: left;
     font-weight: bold;
-    width: 75%;
+    width: 90%;
 
 }
 .product-description {

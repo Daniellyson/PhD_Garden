@@ -42,6 +42,7 @@ CREATE TABLE customer (
 create table customer_order (
 	id int primary key auto_increment,
     order_date date,
+    paid TINYINT(1),
     
     customer_id int not null references customer(id)
 );
@@ -72,8 +73,8 @@ create table order_line (
 create table discount (
 	id int primary key auto_increment,
     percentage int(3) not null,
-    startDate date,
-    endDate date,
+    start_date date,
+    end_date date,
     
     category_id int references category(id),
     product_id int references product(id)

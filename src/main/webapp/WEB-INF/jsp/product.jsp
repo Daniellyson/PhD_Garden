@@ -38,7 +38,14 @@
                 </details>
 
 
-                <p class="product-price"> <spring:message code="price"/> : ${product.price} €</p>
+                <p class="product-price">
+                    <spring:message code="price"/> : ${product.price} €
+                    <core:forEach items="product.discounts" var="discount">
+                        <core:if test="product.id == disounct.id">
+                            <span id="discount"> ${discount.percentage} <spring:message code="discount"></spring:message> </span>
+                        </core:if>
+                    </core:forEach>
+                </p>
 
                 <core:if test="${limitStock == 0}">
                     <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="get">

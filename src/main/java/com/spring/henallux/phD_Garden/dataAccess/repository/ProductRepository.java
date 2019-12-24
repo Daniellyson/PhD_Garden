@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
-    @Query(value = "SELECT p FROM ProductEntity p WHERE p.category.id = :id")
+    @Query(value = "SELECT p FROM ProductEntity p WHERE p.categoryEntity.id = :id")
     List<ProductEntity> findAllByCategoryId(@Param("id") Integer id);
 
 }

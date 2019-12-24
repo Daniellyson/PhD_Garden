@@ -19,7 +19,8 @@ public class ProductEntity {
     private Integer id;
 
     @ManyToOne
-    private CategoryEntity category;
+    @JoinColumn(name = "category_id")
+    private CategoryEntity categoryEntity;
 
     private Double price;
     private Integer stock;
@@ -27,4 +28,7 @@ public class ProductEntity {
 
     @OneToMany(mappedBy = "translationProductEntityID")
     private List<TranslationProductEntity> translationProductsEntity;
+
+    @OneToMany(mappedBy = "id")
+    private List<DiscountEntity> discounts;
 }
