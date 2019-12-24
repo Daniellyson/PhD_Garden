@@ -1,8 +1,12 @@
 .shopping-cart-style {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 0px;
 
     margin-left: auto;
     margin-right: auto;
 
+}
+
+.text-dark {
+    margin-left: 5px;
 }

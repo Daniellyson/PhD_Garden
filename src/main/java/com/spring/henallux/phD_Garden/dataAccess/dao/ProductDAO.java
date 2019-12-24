@@ -33,6 +33,4 @@ public class ProductDAO implements ProductDataAccess {
     public Product getById(Integer id) {
         return productConverter.productEntityToProductModel(productRepository.findById(id).orElse(null));
     }
-
-
 }

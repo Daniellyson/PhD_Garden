@@ -18,7 +18,4 @@ public class Product {
     @NotEmpty
     private List<TranslationProduct> translationProducts;
 
-    public Boolean isAvailable() {
-        return stock > 0;
-    }
 }

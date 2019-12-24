@@ -22,4 +22,5 @@ public class ProductService {
     public Product loadProduct(Integer id) {
         return productDataAccess.getById(id);
     }
+
 }
