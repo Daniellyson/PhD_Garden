@@ -16,31 +16,37 @@
                         <img class="pics" src="<core:url value='/static/img/${product.url_image}.jpg'/>" />
                     </core:if>
                 </div>
+
+                <core:set var="limitStock" value="${0}" />
+                <core:set var="stockTaken" value="${0}" />
+                <core:forEach items="${shoppingCart}" var="productStock">
+                    <core:if test="${productStock.key == product}">
+                        <core:set var="stockTaken" value="${productStock.value}" />
+                        <core:if test="${productStock.value >= product.stock}">
+                            <core:set var="limitStock" value="${1}" />
+                        </core:if>
+                    </core:if>
+                </core:forEach>
+
                 <details>
-                    <summary class="product-name">${translation.product_name}</summary>
+                    <summary class="product-name">${translation.product_name}
+                        <core:if test="${limitStock == 0}">
+                            (${product.stock - stockTaken})
+                        </core:if>
+                    </summary>
                     <p class="product-description">${translation.description}</p>
                 </details>
 
 
                 <p class="product-price"> <spring:message code="price"/> : ${product.price} €</p>
 
-
-                <core:set var="limitStock" value="${0}" />
-                <core:forEach items="${shoppingCart}" var="productStock">
-                    <core:if test="${productStock.key == product}">
-                        <core:if test="${productStock.value == product.stock}">
-                            <core:set var="limitStock" value="${1}" />
-                        </core:if>
-                    </core:if>
-                </core:forEach>
-
                 <core:if test="${limitStock == 0}">
                     <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="get">
                         <spring:message code="quantity"/> :
 
 
-                        <input type="number" name="quantity" value="1" required min="1" max="${product.stock}"
-                               oninvalid="this.setCustomValidity('<spring:message code="errorQuantity"/>' + ' (${product.stock})')"
+                        <input type="number" name="quantity" value="1" required min="1" max="${product.stock - stockTaken}"
+                               oninvalid="this.setCustomValidity('<spring:message code="errorQuantity"/>' + ' (${product.stock - stockTaken})')"
                                oninput="this.setCustomValidity('')"/>
 
                         <input type="hidden" name="origin" value="/products_Category/${currentCategory.id}"/>
