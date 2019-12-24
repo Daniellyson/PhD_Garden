@@ -51,7 +51,7 @@ INSERT INTO product (category_id, price, stock) VALUES (3, 13.75, 10);
 
 
 INSERT INTO product (category_id, price, stock) VALUES (4, 3.6, 20);
-INSERT INTO product (category_id, price, stock) VALUES (4, 8, 30);
+INSERT INTO product (category_id, price, stock) VALUES (4, 12, 30);
 
 INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, "dragon-flower");
 
@@ -91,3 +91,11 @@ INSERT INTO  translation_product VALUES (12, 1, 'Rake', 'A rake to prepare your 
 
 INSERT INTO  translation_product VALUES (13, 2, 'Mufliers', 'Cultivées en serre en Wallonie de coulor blanche');
 INSERT INTO  translation_product VALUES (13, 1, 'Dragon flowers', 'Cultivated in Wallonia, white color');
+
+
+/*DISCOUNT*/
+
+INSERT INTO discount (percentage, product_id) values(5,12);
+INSERT INTO discount (percentage, product_id) values(10,2);
+INSERT INTO discount (percentage, product_id) values(10,7);
+INSERT INTO discount (percentage, product_id) values(15,8);

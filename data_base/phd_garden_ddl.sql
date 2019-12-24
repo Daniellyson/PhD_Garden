@@ -71,9 +71,9 @@ create table order_line (
 
 create table discount (
 	id int primary key auto_increment,
-    percentage varchar(30) not null,
-    startDate date not null,
-    endDate date not null,
+    percentage int(3) not null,
+    startDate date,
+    endDate date,
     
     category_id int references category(id),
     product_id int references product(id)
