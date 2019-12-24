@@ -20,7 +20,7 @@
                                         <div class="p-2 px-3 text-uppercase"> <spring:message code="product"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase"> <spring:message code="price"/> &nbsp;&nbsp;</div>
+                                        <div class="py-2 text-uppercase"> <spring:message code="price"/> </div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase"> <spring:message code="quantity"/> </div>
@@ -53,9 +53,27 @@
                                                         </div>
                                                     </div>
                                                 </th>
-                                                <td class="border-0 align-middle"><strong>${product.key.price} €</strong></td>
-                                                <td class="border-0 align-middle"><strong>${product.value}</strong></td>
-                                                <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                                                <td class="border-0 align-middle"><strong>${product.key.price}€</strong></td>
+                                                <td class="border-0 align-middle">
+                                                    <strong>
+                                                            ${product.value}
+                                                    </strong>
+                                                    <core:if test="${product.value > 1}">
+                                                        <a class="text-dark" href="/phD_Garden/shopping-cart/withdraw/${product.key.id}?quantity=1">
+                                                            <i class="fa fa-arrow-down"></i>
+                                                        </a>
+                                                    </core:if>
+                                                    <core:if test="${product.value < product.key.stock}">
+                                                        <a class="text-dark" href="/phD_Garden/shopping-cart/add/${product.key.id}?quantity=1&origin=/shopping-cart">
+                                                            <i class="fa fa-arrow-up"></i>
+                                                        </a>
+                                                    </core:if>
+                                                </td>
+                                                <td class="border-0 align-middle">
+                                                    <a href="/phD_Garden/shopping-cart/withdraw/${product.key.id}" class="text-dark">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </core:if>
                                     </core:forEach>
@@ -66,17 +84,38 @@
                         <!-- End -->
                     </div>
                     <div class="col-lg-6">
-                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">
+                            <spring:message code="orderSummary"/>
+                        </div>
                         <div class="p-4">
-                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                             <ul class="list-unstyled mb-4">
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                    <h5 class="font-weight-bold">$400.00</h5>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <strong class="text-muted">
+                                        <spring:message code="orderSubtotal"/>
+                                    </strong>
+                                    <strong>
+                                        $390.00
+                                    </strong>
                                 </li>
-                            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <strong class="text-muted">
+                                        <spring:message code="discount"/>
+                                    </strong>
+                                    <strong>
+                                        $0.00
+                                    </strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <strong class="text-muted">
+                                        <spring:message code="total"/>
+                                    </strong>
+                                    <h5 class="font-weight-bold">
+                                        $400.00
+                                    </h5>
+                                </li>
+                            </ul>
+                            <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">
+                                <spring:message code="procceedToCheckout"/>
+                            </a>
                         </div>
                     </div>
                 </div>

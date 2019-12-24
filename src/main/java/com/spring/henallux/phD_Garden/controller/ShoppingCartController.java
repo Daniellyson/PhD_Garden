@@ -1,21 +1,17 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
-import com.spring.henallux.phD_Garden.model.Category;
 import com.spring.henallux.phD_Garden.model.Product;
 
-import com.spring.henallux.phD_Garden.model.TranslationCategory;
 import com.spring.henallux.phD_Garden.service.ProductService;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 @Controller
 @RequestMapping(value="/shopping-cart")
@@ -37,7 +33,7 @@ public class ShoppingCartController extends BaseController{
         return "integrated:shopping-cart";
     }
 
-    @RequestMapping(value = "/add/{id}", method= RequestMethod.POST)
+    @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)
     public String shoppingCart(
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
@@ -47,8 +43,6 @@ public class ShoppingCartController extends BaseController{
             Locale locale) {
 
         //TODO appear message success
-        model.addAttribute("OK", false);
-        model.addAttribute("PLUS", true);
 
         try {
             Product product = productService.loadProduct(id);
@@ -56,11 +50,10 @@ public class ShoppingCartController extends BaseController{
             if(shoppingCart.get(product) != null) {
                 shoppingCart.put(product, shoppingCart.get(product) + quantity);
 
-                model.addAttribute("OK", true);
                 //TODO IF CUSTOMER LOGGED UPDATE ORDER
 
             } else {
-                model.addAttribute("OK", true);
+
                 shoppingCart.put(product, quantity);
 
                 //TODO IF CUSTOMER LOGGED UPDATE ORDER
@@ -68,10 +61,35 @@ public class ShoppingCartController extends BaseController{
 
         } catch (Exception exception) {
             //TODO
+            System.out.println("IN CATCH");
             return "redirect:" + origin;
         }
 
 
         return "redirect:" + origin;
     }
+
+    @RequestMapping(value = "/withdraw/{id}", method= RequestMethod.GET)
+    public String shoppingCart(
+            @PathVariable("id") Integer id,
+            @RequestParam(value = "quantity", required = false) Integer quantity,
+            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
+            Locale locale) {
+        Product product = productService.loadProduct(id);
+
+        if(quantity == null) {
+
+            shoppingCart.remove(product);
+
+            //TODO IF LOGGED take off from order line
+        } else {
+            shoppingCart.put(product, shoppingCart.get(product) - quantity);
+
+            //TODO IF LOGGED update from order line
+        }
+
+
+        return "redirect:/shopping-cart";
+    }
+
 }

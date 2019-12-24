@@ -46,18 +46,17 @@
 </head>
 <body>
     <tiles:insertAttribute name="header" />
-
+    <!--TODO messages success-->
     <div id="messages">
-        <core:if test="${OK}">
+        <core:if test="${message.getOk()}">
             <core:choose>
-                <core:when test="${PLUS}">
+                <core:when test="${message.getPlus()}">
                     <p class="info-message" style="display:none;"><spring:message code="successAddProduct" /></p>
                 </core:when>
                 <core:otherwise>
                     <p class="info-message" style="display:none;"><spring:message code="successWithdrawProduct" /></p>
                 </core:otherwise>
             </core:choose>
-            <p class="info-message">TEST TAMPLATE</p>
         </core:if>
     </div>
 

@@ -23,8 +23,19 @@
 
 
                 <p class="product-price"> <spring:message code="price"/> : ${product.price} €</p>
-                <core:if test="${product.isAvailable()}">
-                    <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="post">
+
+
+                <core:set var="limitStock" value="${0}" />
+                <core:forEach items="${shoppingCart}" var="productStock">
+                    <core:if test="${productStock.key == product}">
+                        <core:if test="${productStock.value == product.stock}">
+                            <core:set var="limitStock" value="${1}" />
+                        </core:if>
+                    </core:if>
+                </core:forEach>
+
+                <core:if test="${limitStock == 0}">
+                    <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="get">
                         <spring:message code="quantity"/> :
 
 
@@ -33,10 +44,11 @@
                                oninput="this.setCustomValidity('')"/>
 
                         <input type="hidden" name="origin" value="/products_Category/${currentCategory.id}"/>
-                        <button type="submit" onclick="appear()"><spring:message code="addToBasket" /></button>
+
+                        <button type="submit" ><spring:message code="addToBasket" /></button>
                     </form>
                 </core:if>
-                <core:if test="${!product.isAvailable()}">
+                <core:if test="${limitStock == 1}">
                     <p class="product-sold-out"><spring:message code="soldOut"/></p>
                 </core:if>
             </div>
