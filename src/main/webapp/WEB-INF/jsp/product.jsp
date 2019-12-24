@@ -17,20 +17,22 @@
                     </core:if>
                 </div>
 
-                <core:set var="limitStock" value="${0}" />
+
+                <core:set var="stockOut" value="${0}" />
                 <core:set var="stockTaken" value="${0}" />
                 <core:forEach items="${shoppingCart}" var="productStock">
                     <core:if test="${productStock.key == product}">
                         <core:set var="stockTaken" value="${productStock.value}" />
                         <core:if test="${productStock.value >= product.stock}">
-                            <core:set var="limitStock" value="${1}" />
+                            <core:set var="stockOut" value="${1}" />
                         </core:if>
                     </core:if>
                 </core:forEach>
 
+
                 <details>
                     <summary class="product-name">${translation.product_name}
-                        <core:if test="${limitStock == 0}">
+                        <core:if test="${stockOut == 0}">
                             (${product.stock - stockTaken})
                         </core:if>
                     </summary>
@@ -40,14 +42,14 @@
 
                 <p class="product-price">
                     <spring:message code="price"/> : ${product.price} €
-                    <core:forEach items="product.discounts" var="discount">
-                        <core:if test="product.id == disounct.id">
+                    <core:forEach items="${product.discounts}" var="discount">
+                        <core:if test="${product.id == discount.id}">
                             <span id="discount"> ${discount.percentage} <spring:message code="discount"></spring:message> </span>
                         </core:if>
                     </core:forEach>
                 </p>
 
-                <core:if test="${limitStock == 0}">
+                <core:if test="${stockOut == 0}">
                     <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="get">
                         <spring:message code="quantity"/> :
 
@@ -61,7 +63,7 @@
                         <button type="submit" ><spring:message code="addToBasket" /></button>
                     </form>
                 </core:if>
-                <core:if test="${limitStock == 1}">
+                <core:if test="${stockOut == 1}">
                     <p class="product-sold-out"><spring:message code="soldOut"/></p>
                 </core:if>
             </div>
