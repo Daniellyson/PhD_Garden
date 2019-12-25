@@ -18,4 +18,5 @@ public class Product {
     @NotEmpty
     private List<TranslationProduct> translationProducts;
 
+    private List<Discount> discounts;
 }

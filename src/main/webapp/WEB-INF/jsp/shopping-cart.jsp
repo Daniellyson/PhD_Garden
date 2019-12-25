@@ -77,12 +77,15 @@
                                             </tr>
                                         </core:if>
                                     </core:forEach>
+                                    <!--CALCULATION-->
                                 </core:forEach>
                                 </tbody>
                             </table>
                         </div>
                         <!-- End -->
                     </div>
+
+
                     <div class="col-lg-6">
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">
                             <spring:message code="orderSummary"/>
@@ -94,7 +97,7 @@
                                         <spring:message code="orderSubtotal"/>
                                     </strong>
                                     <strong>
-                                        $390.00
+                                        ${totalPrice}
                                     </strong>
                                 </li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
@@ -102,14 +105,14 @@
                                         <spring:message code="discount"/>
                                     </strong>
                                     <strong>
-                                        $0.00
+                                        <!--TODO-->
                                     </strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
                                     <strong class="text-muted">
                                         <spring:message code="total"/>
                                     </strong>
                                     <h5 class="font-weight-bold">
-                                        $400.00
+                                        ${totalPrice}
                                     </h5>
                                 </li>
                             </ul>
@@ -118,6 +121,7 @@
                             </a>
                         </div>
                     </div>
+
                 </div>
 
             </div>

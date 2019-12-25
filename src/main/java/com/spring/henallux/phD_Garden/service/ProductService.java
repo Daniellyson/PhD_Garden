@@ -13,14 +13,14 @@ public class ProductService {
 
     @Autowired
     @Qualifier("productDAO")
-    private ProductDataAccess productDataAccess;
+    private ProductDataAccess productDAO;
 
     public List<Product> loadAllProductsByCategory(Integer categoryId) {
-        return productDataAccess.getAllByCategory(categoryId);
+        return productDAO.getAllByCategory(categoryId);
     }
 
     public Product loadProduct(Integer id) {
-        return productDataAccess.getById(id);
+        return productDAO.getById(id);
     }
 
 }

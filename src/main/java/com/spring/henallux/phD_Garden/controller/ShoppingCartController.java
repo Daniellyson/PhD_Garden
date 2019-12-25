@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -29,6 +30,7 @@ public class ShoppingCartController extends BaseController{
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
+        model.addAttribute("totalPrice", shoppingCartService.calculationTotalPrice(shoppingCart));
 
         return "integrated:shopping-cart";
     }
@@ -42,29 +44,20 @@ public class ShoppingCartController extends BaseController{
             Model model,
             Locale locale) {
 
-        //TODO appear message success
 
-        try {
-            Product product = productService.loadProduct(id);
+        Product product = productService.loadProduct(id);
 
-            if(shoppingCart.get(product) != null) {
-                shoppingCart.put(product, shoppingCart.get(product) + quantity);
+        if(shoppingCart.get(product) != null) {
+            shoppingCart.put(product, shoppingCart.get(product) + quantity);
 
-                //TODO IF CUSTOMER LOGGED UPDATE ORDER
+            //TODO IF CUSTOMER LOGGED UPDATE ORDER
 
-            } else {
+        } else {
 
-                shoppingCart.put(product, quantity);
+            shoppingCart.put(product, quantity);
 
-                //TODO IF CUSTOMER LOGGED UPDATE ORDER
-            }
-
-        } catch (Exception exception) {
-            //TODO
-            System.out.println("IN CATCH");
-            return "redirect:" + origin;
+            //TODO IF CUSTOMER LOGGED UPDATE ORDER
         }
-
 
         return "redirect:" + origin;
     }
