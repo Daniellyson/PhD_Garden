@@ -27,19 +27,20 @@ public class ShoppingCartService {
         return 0.0;
     }
 
-    public String calculationDiscount(HashMap<Integer, Discount> discounts, HashMap<Product, Integer> shoppingCart) {
+    public String calculationDiscount(Integer key, Integer discount, HashMap<Product, Integer> shoppingCart) {
         double totalDiscount = 0.0;
+        System.out.println("IN CALC DISCOUNT");
 
         Collection<Product> products = shoppingCart.keySet();
 
-        for (Map.Entry entry : discounts.entrySet()) {
-            double percentage = (double)entry.getValue() / 100;
-            for (Product product : products) {
-                if(product.getId() == entry.getKey()) {
-                    totalDiscount += product.getPrice() * percentage;
-                }
+        double percentage = (double)discount / 100;
+
+        for (Product product : products) {
+            if(product.getId() == key) {
+                totalDiscount += product.getPrice() * percentage * shoppingCart.get(product);
             }
         }
+        System.out.println("DISCOUNT : " + totalDiscount);
         return String.format("%.2f", totalDiscount);
     }
 }

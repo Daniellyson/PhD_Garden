@@ -9,15 +9,17 @@ import com.spring.henallux.phD_Garden.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value="/shopping-cart")
-public class ShoppingCartController extends BaseController{
+public class ShoppingCartController extends BaseController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
@@ -25,9 +27,11 @@ public class ShoppingCartController extends BaseController{
     @Autowired
     private ProductService productService;
 
+    private String discountTotal;
+
     @RequestMapping(method= RequestMethod.GET)
     public String shoppingCart(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
-                               @ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
+                               //@ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
                                Model model,
                                Locale locale) {
         model.addAttribute("title", getMessageSource().getMessage("shoppingCart", null, locale));
@@ -35,7 +39,7 @@ public class ShoppingCartController extends BaseController{
         model.addAttribute("categories", categories());
 
         model.addAttribute("orderSubtotal", shoppingCartService.calculationTotalPrice(shoppingCart));
-        model.addAttribute("discount", shoppingCartService.calculationDiscount(discounts, shoppingCart));
+        model.addAttribute("discount", discountTotal);
         //model.addAttribute("totalPrice", shoppingCartService);
 
         return "integrated:shopping-cart";
@@ -46,10 +50,11 @@ public class ShoppingCartController extends BaseController{
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
             @RequestParam("origin") String origin,
+            @RequestParam(value = "product_id", required = false) Integer key,
+            @RequestParam(value = "percentage", required = false) Integer discount,
             @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
             Model model,
             Locale locale) {
-
 
         Product product = productService.loadProduct(id);
 
@@ -63,6 +68,11 @@ public class ShoppingCartController extends BaseController{
             shoppingCart.put(product, quantity);
 
             //TODO IF CUSTOMER LOGGED UPDATE ORDER
+        }
+
+        if(key != null && discount != null) {
+            discountTotal = shoppingCartService.calculationDiscount(key, discount, shoppingCart);
+            //model.addAttribute("discount", shoppingCartService.calculationDiscount(key, discount, shoppingCart));
         }
 
         return "redirect:" + origin;
