@@ -14,7 +14,11 @@ public class DiscountService {
     @Qualifier("discountDAO")
     private DiscountDataAccess discountDAO;
 
-    public List<Discount> getAllDiscount() {
-        return discountDAO.getAll();
+    public List<Discount> getAllDiscountById(Integer id) {
+        return discountDAO.getAllByDiscount(id);
+    }
+
+    public Discount getDiscountById(Integer id) {
+        return discountDAO.getDiscountById(id);
     }
 }

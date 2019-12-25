@@ -42,9 +42,9 @@
 
                 <p class="product-price">
                     <spring:message code="price"/> : ${product.price} €
-                    <core:forEach items="${product.discounts}" var="discount">
-                        <core:if test="${product.id == discount.id}">
-                            <span id="discount"> ${discount.percentage} <spring:message code="discount"></spring:message> </span>
+                    <core:forEach items="${discounts}" var="discount">
+                        <core:if test="${product.id == discount.key}">
+                            <span class="discounts"> (${discount.value.percentage}% <spring:message code="discount"></spring:message>) </span>
                         </core:if>
                     </core:forEach>
                 </p>

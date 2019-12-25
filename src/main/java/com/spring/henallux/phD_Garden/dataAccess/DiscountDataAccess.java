@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface DiscountDataAccess {
 
-    List<Discount> getAll();
+    List<Discount> getAllByDiscount(Integer id);
+
+    Discount getDiscountById(Integer id);
 }

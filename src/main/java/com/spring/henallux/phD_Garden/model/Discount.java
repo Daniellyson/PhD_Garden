@@ -3,6 +3,7 @@ package com.spring.henallux.phD_Garden.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 @Data

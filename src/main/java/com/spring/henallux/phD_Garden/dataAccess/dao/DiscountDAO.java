@@ -24,9 +24,14 @@ public class DiscountDAO implements DiscountDataAccess {
 
 
     @Override
-    public List<Discount> getAll() {
-        return discountRepository.findAll().stream()
+    public List<Discount> getAllByDiscount(Integer id) {
+        return discountRepository.findAllById(id).stream()
                 .map(discountEntity -> discountConverter.discountEntityToDiscountModel(discountEntity))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Discount getDiscountById(Integer id) {
+        return discountConverter.discountEntityToDiscountModel(discountRepository.findById(id).orElse(null));
     }
 }

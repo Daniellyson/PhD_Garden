@@ -33,7 +33,11 @@ summary.product-name {
 
 .product-price {
     text-align: left;
-    width: 50%;
+    width: 90%;
+}
+
+.discounts {
+    color: #23ff54;
 }
 
 .product-add-form {

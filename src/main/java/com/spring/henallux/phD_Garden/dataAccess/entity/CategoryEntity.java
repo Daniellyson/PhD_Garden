@@ -13,7 +13,6 @@ import java.util.List;
 public class CategoryEntity {
 
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

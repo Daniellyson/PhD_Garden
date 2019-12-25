@@ -18,8 +18,10 @@ public class DiscountEntity {
 
     private Integer percentage;
 
+    @Column(name = "start_date")
     private Date startDate;
 
+    @Column(name = "end_date")
     private Date endDate;
 
     @ManyToOne
