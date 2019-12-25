@@ -1,6 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
+import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.service.ProductService;
@@ -25,12 +26,17 @@ public class ShoppingCartController extends BaseController{
     private ProductService productService;
 
     @RequestMapping(method= RequestMethod.GET)
-    public String shoppingCart(@ModelAttribute(value = "shoppingCart") HashMap<Product, Integer> shoppingCart, Model model, Locale locale) {
+    public String shoppingCart(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
+                               @ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
+                               Model model,
+                               Locale locale) {
         model.addAttribute("title", getMessageSource().getMessage("shoppingCart", null, locale));
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
-        model.addAttribute("totalPrice", shoppingCartService.calculationTotalPrice(shoppingCart));
+        model.addAttribute("orderSubtotal", shoppingCartService.calculationTotalPrice(shoppingCart));
+        model.addAttribute("discount", shoppingCartService.calculationDiscount(discounts, shoppingCart));
+        //model.addAttribute("totalPrice", shoppingCartService);
 
         return "integrated:shopping-cart";
     }

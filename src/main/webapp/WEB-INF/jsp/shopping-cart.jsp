@@ -97,7 +97,7 @@
                                         <spring:message code="orderSubtotal"/>
                                     </strong>
                                     <strong>
-                                        ${totalPrice}
+                                        ${orderSubtotal}
                                     </strong>
                                 </li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
@@ -105,7 +105,7 @@
                                         <spring:message code="discount"/>
                                     </strong>
                                     <strong>
-                                        <!--TODO-->
+                                        ${discount}
                                     </strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
                                     <strong class="text-muted">
