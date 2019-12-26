@@ -38,32 +38,21 @@
     <!--SHOPPING-CART-->
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.shopping-cart.css" />">
     <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.shopping-cart.css" />">
-    <link rel="stylesheet" href="<core:url value="/static/css/styles.shopping-cart.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
 
-    <!--JS-->
-    <link rel="stylesheet" href="<core:url value="/static/js/showMessageSuccess.js" />">
 
 </head>
 <body>
     <tiles:insertAttribute name="header" />
-    <!--TODO messages success-->
-    <div id="messages">
-        <core:if test="${message.getOk()}">
-            <core:choose>
-                <core:when test="${message.getPlus()}">
-                    <p class="info-message" style="display:none;"><spring:message code="successAddProduct" /></p>
-                </core:when>
-                <core:otherwise>
-                    <p class="info-message" style="display:none;"><spring:message code="successWithdrawProduct" /></p>
-                </core:otherwise>
-            </core:choose>
-        </core:if>
-    </div>
+
 
     <div id="main-content">
         <tiles:insertAttribute name="main-content" />
     </div>
 
     <tiles:insertAttribute name="footer" />
+
+
+
 </body>
 </html>

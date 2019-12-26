@@ -65,7 +65,7 @@
 
                         <input type="hidden" name="percentage" value="${percentageDiscount}"/>
 
-                        <button type="submit" ><spring:message code="addToBasket" /></button>
+                        <button type="submit"><spring:message code="addToBasket" /></button>
                     </form>
                 </core:if>
                 <core:if test="${stockOut == 1}">

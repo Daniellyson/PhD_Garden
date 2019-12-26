@@ -44,6 +44,7 @@
 
                <div id="shopping-cart">
                     <a href="<core:url value='/shopping-cart' />" ><img src="<core:url value='/static/img/shopping-cart.png' />" /></a>
+
                     <p id="paragraphCart">
                          <core:set var="itemsTotal" value="${0}" />
                          <core:forEach items="${shoppingCart}" var="product">
