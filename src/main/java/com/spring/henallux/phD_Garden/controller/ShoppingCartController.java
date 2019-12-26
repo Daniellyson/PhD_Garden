@@ -27,8 +27,11 @@ public class ShoppingCartController extends BaseController {
     @Autowired
     private ProductService productService;
 
-    private String discountTotal;
+    private Double discountTotal = 0.0;
 
+    private HashMap<Integer, Double> discounts = new HashMap<>();
+
+    //TODO OK fix some details : formater decimal
     @RequestMapping(method= RequestMethod.GET)
     public String shoppingCart(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
                                //@ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
@@ -39,19 +42,23 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("categories", categories());
 
         model.addAttribute("orderSubtotal", shoppingCartService.calculationTotalPrice(shoppingCart));
+
+        for (Map.Entry entry : discounts.entrySet()) {
+            discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+        }
         model.addAttribute("discount", discountTotal);
-        //model.addAttribute("totalPrice", shoppingCartService);
+        discountTotal = 0.0;
 
         return "integrated:shopping-cart";
     }
+
 
     @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)
     public String shoppingCart(
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
             @RequestParam("origin") String origin,
-            @RequestParam(value = "product_id", required = false) Integer key,
-            @RequestParam(value = "percentage", required = false) Integer discount,
+            @RequestParam(value = "percentage") Integer discount,
             @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
             Model model,
             Locale locale) {
@@ -70,11 +77,12 @@ public class ShoppingCartController extends BaseController {
             //TODO IF CUSTOMER LOGGED UPDATE ORDER
         }
 
-        if(key != null && discount != null) {
-            discountTotal = shoppingCartService.calculationDiscount(key, discount, shoppingCart);
-            //model.addAttribute("discount", shoppingCartService.calculationDiscount(key, discount, shoppingCart));
+        if(id != null && discount != null) {
+            if(!discounts.containsKey(id)) {
+                Double percentage = (discount/100.0);
+                discounts.put(id, percentage);
+            }
         }
-
         return "redirect:" + origin;
     }
 
@@ -87,16 +95,15 @@ public class ShoppingCartController extends BaseController {
         Product product = productService.loadProduct(id);
 
         if(quantity == null) {
-
+            discountTotal -= discounts.get(id) * shoppingCart.get(product);
             shoppingCart.remove(product);
 
             //TODO IF LOGGED take off from order line
         } else {
             shoppingCart.put(product, shoppingCart.get(product) - quantity);
-
+            discountTotal -= discounts.get(id);
             //TODO IF LOGGED update from order line
         }
-
 
         return "redirect:/shopping-cart";
     }

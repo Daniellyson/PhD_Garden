@@ -60,7 +60,7 @@
                                                             ${product.value}
                                                     </strong>
                                                     <core:if test="${product.value > 1}">
-                                                        <a class="text-dark" href="/phD_Garden/shopping-cart/withdraw/${product.key.id}?quantity=1">
+                                                        <a class="text-dark" href="/phD_Garden/shopping-cart/withdraw/${product.key.id}?quantity=1&product_id=${product.key.id}">
                                                             <i class="fa fa-arrow-down"></i>
                                                         </a>
                                                     </core:if>
