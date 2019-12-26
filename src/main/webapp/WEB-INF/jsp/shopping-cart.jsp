@@ -113,7 +113,7 @@
                                         <spring:message code="total"/>
                                     </strong>
                                     <h5 class="font-weight-bold">
-                                        ${totalPrice}
+                                        ${totalOrder}
                                     </h5>
                                 </li>
                             </ul>

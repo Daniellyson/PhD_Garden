@@ -31,7 +31,6 @@ public class ShoppingCartController extends BaseController {
 
     private HashMap<Integer, Double> discounts = new HashMap<>();
 
-    //TODO OK fix some details : formater decimal
     @RequestMapping(method= RequestMethod.GET)
     public String shoppingCart(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
                                //@ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
@@ -41,12 +40,17 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
-        model.addAttribute("orderSubtotal", shoppingCartService.calculationTotalPrice(shoppingCart));
+        Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
+        model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
 
         for (Map.Entry entry : discounts.entrySet()) {
             discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
         }
-        model.addAttribute("discount", discountTotal);
+        model.addAttribute("discount", String.format("%.2f", discountTotal));
+
+        Double totalOrder = orderSubtotal - discountTotal;
+        model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
+
         discountTotal = 0.0;
 
         return "integrated:shopping-cart";
@@ -58,7 +62,7 @@ public class ShoppingCartController extends BaseController {
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
             @RequestParam("origin") String origin,
-            @RequestParam(value = "percentage") Integer discount,
+            @RequestParam(value = "percentage", required = false) Integer discount,
             @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
             Model model,
             Locale locale) {
@@ -67,14 +71,9 @@ public class ShoppingCartController extends BaseController {
 
         if(shoppingCart.get(product) != null) {
             shoppingCart.put(product, shoppingCart.get(product) + quantity);
-
-            //TODO IF CUSTOMER LOGGED UPDATE ORDER
-
         } else {
 
             shoppingCart.put(product, quantity);
-
-            //TODO IF CUSTOMER LOGGED UPDATE ORDER
         }
 
         if(id != null && discount != null) {
@@ -95,14 +94,10 @@ public class ShoppingCartController extends BaseController {
         Product product = productService.loadProduct(id);
 
         if(quantity == null) {
-            discountTotal -= discounts.get(id) * shoppingCart.get(product);
             shoppingCart.remove(product);
 
-            //TODO IF LOGGED take off from order line
         } else {
             shoppingCart.put(product, shoppingCart.get(product) - quantity);
-            discountTotal -= discounts.get(id);
-            //TODO IF LOGGED update from order line
         }
 
         return "redirect:/shopping-cart";

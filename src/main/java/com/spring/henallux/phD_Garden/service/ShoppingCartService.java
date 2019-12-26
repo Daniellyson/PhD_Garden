@@ -23,10 +23,6 @@ public class ShoppingCartService {
         return totalPrice;
     }
 
-    public double getOrderSubtotal() {
-        return 0.0;
-    }
-
     public Double calculationDiscount(Integer key, Double discount, HashMap<Product, Integer> shoppingCart) {
         double totalDiscount = 0.0;
 
