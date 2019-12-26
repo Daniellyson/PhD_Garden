@@ -10,3 +10,14 @@
 .text-dark {
     margin-left: 5px;
 }
+
+#textEmpity {
+    text-align: center;
+}
+
+img#cart-empty {
+    text-align: center;
+    margin-left: 172px;
+    margin-bottom: 11px;
+    width: 200px;
+}

@@ -42,8 +42,11 @@
 
                 <p class="product-price">
                     <spring:message code="price"/> : ${product.price} €
+                    <core:set var="percentageDiscount" value="${null}" />
                     <core:forEach items="${discounts}" var="discount">
+
                         <core:if test="${product.id == discount.key}">
+                            <core:set var="percentageDiscount" value="${discount.value.percentage}" />
                             <span class="discounts"> (${discount.value.percentage}% <spring:message code="discount"></spring:message>) </span>
                         </core:if>
                     </core:forEach>
@@ -59,6 +62,8 @@
                                oninput="this.setCustomValidity('')"/>
 
                         <input type="hidden" name="origin" value="/products_Category/${currentCategory.id}"/>
+
+                        <input type="hidden" name="percentage" value="${percentageDiscount}"/>
 
                         <button type="submit" ><spring:message code="addToBasket" /></button>
                     </form>
