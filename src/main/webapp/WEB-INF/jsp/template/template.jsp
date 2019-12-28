@@ -39,6 +39,11 @@
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.shopping-cart.css" />">
     <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.shopping-cart.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
+    <!--INFORMATION-->
+    <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.info.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.info.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/Features-Blue.info.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/info.css" />">
 
 
 </head>

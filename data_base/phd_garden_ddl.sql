@@ -36,7 +36,8 @@ CREATE TABLE customer (
     street varchar(50) NOT NULL,
     house_number varchar(5) NOT NULL,
     postalcode int(5) NOT NULL,
-    locality varchar(50) NOT NULL
+    locality varchar(50) NOT NULL,
+	CHECK(email LIKE '%@%.%')
 );
 
 create table customer_order (
@@ -58,7 +59,9 @@ create table product (
     url_image varchar(30) unique,
     stock int(10),
     
-    category_id int not null references category(id)
+    category_id int not null references category(id),
+    CHECK(price > 0),
+	CHECK(stock >= 0)
 );
 
 create table order_line (
@@ -67,7 +70,8 @@ create table order_line (
     unit_price decimal(6,2) not null,
 
     order_line_id int not null references customer_order(id),
-    product_id int not null references product(id)
+    product_id int not null references product(id),
+    CHECK(quantity > 0)
 );
 
 create table discount (
@@ -77,7 +81,8 @@ create table discount (
     end_date date,
     
     category_id int references category(id),
-    product_id int references product(id)
+    product_id int references product(id),
+    CHECK(percentage > 0)
 );
 
 
