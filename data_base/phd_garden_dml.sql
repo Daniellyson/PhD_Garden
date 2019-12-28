@@ -1,4 +1,3 @@
-
 /*CATEGORY*/
 INSERT INTO category (url_image)
 VALUES ('Flowers');
@@ -38,7 +37,7 @@ INSERT INTO product (category_id, price, stock) VALUES (2, 1.9, 30);
 
 INSERT INTO product (category_id, price, stock) VALUES (4, 20.83, 20);
 
-INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 100);
+INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 50);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.42, 30);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.62, 25);
 

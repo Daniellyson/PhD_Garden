@@ -12,7 +12,9 @@
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 PH</p>
         </div>
-        <p id="paragraph">Paragraph</p>
+        <a href="<core:url value='/about-us' />">
+            <p id="paragraph"><spring:message code="information" /> </p>
+        </a>
         <p class="copyright">PhD Garden © 2019</p>
     </footer>
 </div>
