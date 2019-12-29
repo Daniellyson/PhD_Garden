@@ -50,6 +50,7 @@ create table customer_order (
     customer_id int not null references customer(id)
 );
 
+
 create table category (
 	id int primary key auto_increment,
     url_image varchar(30) unique
@@ -75,7 +76,6 @@ create table order_line (
     product_id int not null references product(id),
     CHECK(quantity > 0)
 );
-
 
 
 create table discount (
@@ -132,17 +132,5 @@ create TRIGGER phd_garden_order
 	set new.order_date = now();
 
 
-/*TODO TESTS*/
-delimiter $
-	create TRIGGER phd_garden_stock
-	after insert on customer_order
-	FOR EACH ROW
-	BEGIN
-		IF (customer_order.paid = true) THEN
-			IF (order_line.product_id = product.id) THEN
-				update product set stock = product.stock - phd_garden.order_line.quantity;
-			END IF;
-		END IF;
-	END;
-$
+
 
