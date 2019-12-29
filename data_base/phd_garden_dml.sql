@@ -54,8 +54,6 @@ INSERT INTO product (category_id, price, stock) VALUES (4, 12, 30);
 
 INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, "dragon-flower");
 
-
-
 /*TRANSLATION_PRODUCT*/
 
 INSERT INTO  translation_product VALUES (1, 2, 'Tomate', 'Cultivées en serre en Wallonie');
@@ -98,3 +96,5 @@ INSERT INTO discount (percentage, product_id) values(5,12);
 INSERT INTO discount (percentage, product_id) values(10,2);
 INSERT INTO discount (percentage, product_id) values(10,7);
 INSERT INTO discount (percentage, product_id) values(15,8);
+
+/*USER*/
