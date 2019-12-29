@@ -1,8 +1,3 @@
-DROP TRIGGER phd_garden_order;
-DROP TRIGGER phd_garden_customer; 
-DROP TRIGGER phd_garden_stock; 
-
-
 drop table translation_product;
 drop table translation_category;
 drop table language;
@@ -45,7 +40,6 @@ CREATE TABLE customer (
 create table customer_order (
 	id int primary key auto_increment,
     order_date date,
-    paid TINYINT(1),
     
     customer_id int not null references customer(id)
 );
@@ -132,5 +126,15 @@ create TRIGGER phd_garden_order
 	set new.order_date = now();
 
 
-
-
+/*TODO TESTS*//*
+DELIMITER $$
+create TRIGGER phd_garden_check_paid
+after insert on customer_order
+FOR EACH ROW  
+BEGIN
+	IF (customer_order.paid = true) THEN
+		update product set product.stock = product.stock - order_line.quantity
+		where order_line.product_id = product.id;
+	END IF;
+END;$$
+DELIMITER ;*/
