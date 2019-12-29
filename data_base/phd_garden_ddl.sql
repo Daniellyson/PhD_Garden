@@ -124,3 +124,17 @@ create TRIGGER phd_garden_customer
     before INSERT on customer
     for each row
 	set new.registration_date = now();
+
+/*TODO TESTS*/
+delimiter $
+	create TRIGGER phd_garden_stock
+	after insert on customer_order
+	FOR EACH ROW
+	BEGIN
+		IF (customer_order.paid = true) THEN
+			IF (order_line.product_id = product.id) THEN
+				update product set new.stock = old.stock - phd_garden.order_line.quantity;
+			END IF;
+		END IF;
+	END;
+$
