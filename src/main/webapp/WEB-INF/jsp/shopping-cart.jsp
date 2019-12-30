@@ -131,7 +131,7 @@
                                     </h5>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">
+                            <a href="<core:url value='/order' />" class="btn btn-dark rounded-pill py-2 btn-block">
                                 <spring:message code="procceedToCheckout"/>
                             </a>
                         </div>

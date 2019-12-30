@@ -41,8 +41,8 @@ INSERT INTO product (category_id, price, stock) VALUES (2, 1.25, 50);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.42, 30);
 INSERT INTO product (category_id, price, stock) VALUES (2, 0.62, 25);
 
-INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 8.5, 15, "rose");
-INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 4, 40, "clove-pink");
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 8.5, 15, 'rose');
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 4, 40, 'clove-pink');
 
 INSERT INTO product (category_id, price, stock) VALUES (3, 15.25, 15);
 INSERT INTO product (category_id, price, stock) VALUES (3, 21, 7);
@@ -52,7 +52,7 @@ INSERT INTO product (category_id, price, stock) VALUES (3, 13.75, 10);
 INSERT INTO product (category_id, price, stock) VALUES (4, 3.6, 20);
 INSERT INTO product (category_id, price, stock) VALUES (4, 12, 30);
 
-INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, "dragon-flower");
+INSERT INTO product (category_id, price, stock, url_image) VALUES (1, 7.75, 12, 'dragon-flower');
 
 /*TRANSLATION_PRODUCT*/
 
@@ -96,3 +96,7 @@ INSERT INTO discount (percentage, product_id) values(5,12);
 INSERT INTO discount (percentage, product_id) values(10,2);
 INSERT INTO discount (percentage, product_id) values(10,7);
 INSERT INTO discount (percentage, product_id) values(15,8);
+
+/*USER*/
+INSERT INTO customer (authorities,non_expired,non_locked,credentials_non_expired,enabled,username,password,firstname,lastname,email,gender,street,house_number,postalcode,locality)
+VALUES ('USER',1,1,1,1,'Dany','Password','Dany','Dany','user2@email.com','1','2','3','4','5');
