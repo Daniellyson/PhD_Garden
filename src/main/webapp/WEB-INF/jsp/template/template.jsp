@@ -44,6 +44,12 @@
     <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.info.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/Features-Blue.info.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/info.css" />">
+    <!--ORDER-->
+    <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.order.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.order.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/Bootstrap-4---Payment-Form.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
+
 
 
 </head>
