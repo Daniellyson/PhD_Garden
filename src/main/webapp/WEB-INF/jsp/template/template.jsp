@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="<core:url value="/static/bootstrap/css/bootstrap.min.order.css" />">
     <link rel="stylesheet" href="<core:url value="/static/fonts/font-awesome.min.order.css" />">
     <link rel="stylesheet" href="<core:url value="/static/css/Bootstrap-4---Payment-Form.css" />">
-    <link rel="stylesheet" href="<core:url value="/static/css/shopping-cart.css" />">
+    <link rel="stylesheet" href="<core:url value="/static/css/order.css" />">
 
 
 
@@ -62,8 +62,5 @@
     </div>
 
     <tiles:insertAttribute name="footer" />
-
-
-
 </body>
 </html>

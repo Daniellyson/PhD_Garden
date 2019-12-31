@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="include/importTags.jsp"%>
+<%@include file="./include/importTags.jsp"%>
 
 <h3>
     <core:forEach items="${currentCategory.translationCategory}" var="translation">

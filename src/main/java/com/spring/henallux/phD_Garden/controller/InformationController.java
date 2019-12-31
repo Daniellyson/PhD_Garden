@@ -13,7 +13,11 @@ public class InformationController extends BaseController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String enterpriseInformation(Model model, Locale locale) {
+
+        model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("title", getMessageSource().getMessage("information", null, locale));
+        model.addAttribute("categories", categories());
+
         return "integrated:information";
     }
 }

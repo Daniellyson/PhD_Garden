@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="include/importTags.jsp"%>
+<%@include file="./include/importTags.jsp"%>
 
 <div class="features-blue">
     <div class="container">
@@ -30,3 +30,5 @@
 </div>
 <script src="static/js/jquery.min.info.js"></script>
 <script src="static/bootstrap/js/bootstrap.min.info.js"></script>
+<script src="static/js/jquery.min.header.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.header.js"></script>

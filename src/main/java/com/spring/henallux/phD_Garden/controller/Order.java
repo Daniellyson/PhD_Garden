@@ -19,11 +19,11 @@ public class Order extends BaseController {
 
 
     @RequestMapping(method= RequestMethod.GET)
-    public String order(
-            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
+    public String order(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
             Model model,
             Locale locale) {
 
+        model.addAttribute("categories", categories());
 
         //TODO conditions
 
