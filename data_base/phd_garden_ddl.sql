@@ -40,6 +40,7 @@ CREATE TABLE customer (
 create table customer_order (
 	id int primary key auto_increment,
     order_date date,
+    paid tinyint(1),
     
     customer_id int not null references customer(id)
 );
@@ -125,16 +126,3 @@ create TRIGGER phd_garden_order
     for each row
 	set new.order_date = now();
 
-
-/*TODO TESTS*//*
-DELIMITER $$
-create TRIGGER phd_garden_check_paid
-after insert on customer_order
-FOR EACH ROW  
-BEGIN
-	IF (customer_order.paid = true) THEN
-		update product set product.stock = product.stock - order_line.quantity
-		where order_line.product_id = product.id;
-	END IF;
-END;$$
-DELIMITER ;*/
