@@ -96,6 +96,7 @@ INSERT INTO discount (percentage, product_id) values(5,12);
 INSERT INTO discount (percentage, product_id) values(10,2);
 INSERT INTO discount (percentage, product_id) values(10,7);
 INSERT INTO discount (percentage, product_id) values(15,8);
+INSERT INTO discount (percentage, product_id) values(20,9);
 
 /*USER*/
 INSERT INTO customer (authorities,non_expired,non_locked,credentials_non_expired,enabled,username,password,firstname,lastname,email,gender,street,house_number,postalcode,locality)
