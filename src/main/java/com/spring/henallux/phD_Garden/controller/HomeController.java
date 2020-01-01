@@ -1,5 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
+import com.spring.henallux.phD_Garden.model.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

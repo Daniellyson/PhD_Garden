@@ -100,4 +100,4 @@ INSERT INTO discount (percentage, product_id) values(20,9);
 
 /*USER*/
 INSERT INTO customer (authorities,non_expired,non_locked,credentials_non_expired,enabled,username,password,firstname,lastname,email,gender,street,house_number,postalcode,locality)
-VALUES ('USER',1,1,1,1,'Dany','Password','Dany','Dany','user2@email.com','1','2','3','4','5');
+VALUES ('ROLE_USER',1,1,1,1,'Dany','$2a$10$jwQIbe8l8NEd2E3Un4Yo4O3Cmo6zezjvYDZN7Nxu.dRmdV/U64S7a','Dany','Dany','user2@email.com','1','2','3','4','5');

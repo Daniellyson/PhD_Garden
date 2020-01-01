@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="./include/importTags.jsp"%>
 
-
 <div id="category">
     <div id="category-center">
         <h2> <spring:message code="category" /></h2>

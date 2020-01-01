@@ -33,8 +33,18 @@
                </ul>
 
                <span class="navbar-text actions">
-                    <a class="text-white login" href="#"> <spring:message code="logIn" /> </a>
-                    <a class="btn btn-light action-button" role="button" href="#"> <spring:message code="signUp" /> </a>
+
+                    <sec:authorize access="isAuthenticated()">
+                         <div class="text-white login">
+                              <spring:message code="welcome"/> : ${pageContext.request.userPrincipal.name}
+                              <a class="btn btn-light action-button" href="<spring:url value='/logout'/>"> <spring:message code="logOut" /> </a>
+                         </div>
+
+                    </sec:authorize>
+                    <sec:authorize access="!isAuthenticated()">
+                         <a class="text-white login" href="<spring:url value='/login'/>"> <spring:message code="logIn" /> </a>
+                         <a class="btn btn-light action-button" role="button" href="#"> <spring:message code="signUp" /> </a>
+                    </sec:authorize>
                </span>
 
 

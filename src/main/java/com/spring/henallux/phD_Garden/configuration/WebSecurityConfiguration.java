@@ -50,7 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()// We define the logout part here
                 //.logoutUrl("/bidon/logout") = valeur "/bidon/logout" à écrire dans action du formulaire ou dans le lien - par défaut = "logout" (sans /)
-                .logoutSuccessUrl("/") //renvoi vers url si success - ici l'index
+                .logoutSuccessUrl("/home") //renvoi vers url si success - ici l'index
                 .permitAll(); // To make the logout available for any user
     }
 
