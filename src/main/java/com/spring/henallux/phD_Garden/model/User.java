@@ -33,7 +33,7 @@ public class User implements UserDetails {
 
     private String street;
 
-    private Integer house_number;
+    private String house_number;
 
     private Integer postalCode;
 
@@ -49,7 +49,7 @@ public class User implements UserDetails {
 
     private Boolean enabled;
 
-    public User(int id, String username, String password, String firstname, String lastname, String email, String phone, Date birthdate, String gender, String street, Integer house_number, Integer postalCode, String locality, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public User(int id, String username, String password, String firstname, String lastname, String email, String phone, Date birthdate, String gender, String street, String house_number, Integer postalCode, String locality, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -139,11 +139,11 @@ public class User implements UserDetails {
         this.street = street;
     }
 
-    public Integer getHouse_number() {
+    public String getHouse_number() {
         return house_number;
     }
 
-    public void setHouse_number(Integer house_number) {
+    public void setHouse_number(String house_number) {
         this.house_number = house_number;
     }
 
@@ -189,7 +189,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
         if (!isEmpty(authorities)) {
             String[] authoritiesAsArray = authorities.split(",");

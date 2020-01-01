@@ -1,6 +1,11 @@
 package com.spring.henallux.phD_Garden.model.Form;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class RegisterForm {
@@ -25,18 +30,21 @@ public class RegisterForm {
 
     private String phone;
 
-    @NotBlank
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date birthdate;
 
+    @NotBlank
     private String gender;
 
     @NotBlank
     private String street;
 
     @NotBlank
-    private Integer house_number;
+    private String house_number;
 
-    @NotBlank
+    @NotNull
+    @Min(1000)
+    @Max(9999)
     private Integer postalCode;
 
     @NotBlank
@@ -127,11 +135,11 @@ public class RegisterForm {
         this.street = street;
     }
 
-    public Integer getHouse_number() {
+    public String getHouse_number() {
         return house_number;
     }
 
-    public void setHouse_number(Integer house_number) {
+    public void setHouse_number(String house_number) {
         this.house_number = house_number;
     }
 

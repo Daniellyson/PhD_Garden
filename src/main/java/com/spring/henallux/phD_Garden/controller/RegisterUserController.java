@@ -7,6 +7,7 @@ import com.spring.henallux.phD_Garden.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,7 +61,7 @@ public class RegisterUserController {
 
         User newUser = new User();
         newUser.setUsername(userRegister.getUsername());
-        newUser.setPassword(userRegister.getPassword());
+        newUser.setPassword(new BCryptPasswordEncoder().encode(userRegister.getPassword()));
         newUser.setEmail(userRegister.getEmail());
         newUser.setFirstname(userRegister.getFirstname());
         newUser.setLastname(userRegister.getLastname());
@@ -69,11 +70,14 @@ public class RegisterUserController {
         newUser.setLocality(userRegister.getLocality());
         newUser.setPostalCode(userRegister.getPostalCode());
         newUser.setPhone(userRegister.getPhone());
-        newUser.getAuthorities().add(new SimpleGrantedAuthority("ROLE_USER"));
+        newUser.setGender(userRegister.getGender());
+        //newUser.getAuthorities().add(new SimpleGrantedAuthority("ROLE_USER"));
+        newUser.setAuthorities("ROLE_USER");
         newUser.setAccountNonExpired(true);
         newUser.setAccountNonLocked(true);
         newUser.setCredentialsNonExpired(true);
         newUser.setEnabled(true);
+
         userService.save(newUser);
 
         return "redirect:/";
