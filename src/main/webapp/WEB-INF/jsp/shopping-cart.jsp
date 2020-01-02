@@ -18,7 +18,7 @@
                                     <spring:message code="cartEmpity"/>
                                 </div>
                                 <img id="cart-empty" src="<core:url value='/static/img/shopping-cart.png' />" />
-                                <a href="<core:url value='/home' />" class="btn btn-dark rounded-pill py-2 btn-block">
+                                <a href="<core:url value='/' />" class="btn btn-dark rounded-pill py-2 btn-block">
                                     <spring:message code="continueShopping"/>
                                 </a>
                             </div>

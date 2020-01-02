@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
@@ -15,7 +16,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/register", "/static/**", "/information", "/order", "/product", "/shopping-cart"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/", "/home", "/register", "/static/**", "/about-us", "/products_Category/**", "/shopping-cart/**"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImpl;
@@ -42,15 +43,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .formLogin() // We define the login part here.
-                .successHandler(new SimpleUrlAuthenticationSuccessHandler("/home"))
-                //.successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
+                //.successHandler(new SimpleUrlAuthenticationSuccessHandler("/home"))
+                .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
                 //.loginPage(LOGIN_REQUEST) // We specify a login page. Otherwise spring creates one by default
                 .permitAll() // To make the login page the available for any user
 
                 .and()
                 .logout()// We define the logout part here
                 //.logoutUrl("/bidon/logout") = valeur "/bidon/logout" à écrire dans action du formulaire ou dans le lien - par défaut = "logout" (sans /)
-                .logoutSuccessUrl("/home") //renvoi vers url si success - ici l'index
+                .logoutSuccessUrl("/") //renvoi vers url si success - ici l'index
                 .permitAll(); // To make the logout available for any user
     }
 

@@ -39,8 +39,8 @@ CREATE TABLE customer (
 
 create table customer_order (
 	id int primary key auto_increment,
-    order_date date,
-    paid tinyint(1),
+    order_date date not null,
+    paid tinyint(1) not null,
     
     customer_id int not null references customer(id)
 );
@@ -125,4 +125,12 @@ create TRIGGER phd_garden_order
     before INSERT on customer_order
     for each row
 	set new.order_date = now();
-
+/*
+create TRIGGER phd_garden_paid
+    after INSERT on customer_order
+    for each row
+	UPDATE product SET product.stock = product.stock - order_line.quantity
+	WHERE order_line.order_id = new.id
+	AND order_line.product_id = product.id
+	AND new.paid = 1
+*/

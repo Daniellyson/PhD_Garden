@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value="/home")
+@RequestMapping(value="/")
+
 public class HomeController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)

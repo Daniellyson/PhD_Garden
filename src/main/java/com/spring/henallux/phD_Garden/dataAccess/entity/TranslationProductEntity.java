@@ -30,4 +30,37 @@ public class TranslationProductEntity implements Serializable {
 
     private String product_name;
     private String description;
+
+
+    public ProductEntity getTranslationProductEntityID() {
+        return translationProductEntityID;
+    }
+
+    public void setTranslationProductEntityID(ProductEntity translationProductEntityID) {
+        this.translationProductEntityID = translationProductEntityID;
+    }
+
+    public LanguageEntity getTranslationProductLanguageEntityID() {
+        return translationProductLanguageEntityID;
+    }
+
+    public void setTranslationProductLanguageEntityID(LanguageEntity translationProductLanguageEntityID) {
+        this.translationProductLanguageEntityID = translationProductLanguageEntityID;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

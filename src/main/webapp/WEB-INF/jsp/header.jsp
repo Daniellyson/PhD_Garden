@@ -14,8 +14,8 @@
 
      <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
 
-          <img id="logo" src="<core:url value='/static/img/welcome.jpg'/>" href="/phD_Garden/home"/>
-          <a class="navbar-brand" href="/phD_Garden/home">PhD Garden</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <img id="logo" src="<core:url value='/static/img/welcome.jpg'/>" href="/phD_Garden/"/>
+          <a class="navbar-brand" href="/phD_Garden/">PhD Garden</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse"
                id="navcol-1">
                <ul class="nav navbar-nav mr-auto">
