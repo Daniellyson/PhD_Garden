@@ -36,7 +36,7 @@
                         <input type="hidden" name="password" value="EB04w8BBujrEwYahC-alMySkftHST7etXGdrk53nEQ2Cipukxr2DBUVc4-QL91AiZS7F_jvkwyvbspsH"/>
                         <input type="hidden" name="cert_id" value="ARhuNPOEBQlKCNGO7VeWmlAoZrnCpc8kAgZUW97UG14b591iNouAhXdSg0u1oEF6RXAAmr3qFCKyjjR6"/>
                         <input type="hidden" name="cmd" value="_xclick"/>
-                        <input type="hidden" name="amount" value="${totalOrder}"/>
+                        <input type="hidden" name="amount" value="${totalPayPal}"/>
                         <input type="hidden" name="item_name" value="PHD GARDEN"/>
                         <input type="hidden" name="return" value="http://localhost:8082/phD_Garden/order/succeed"/>
                         <input type="hidden" name="cancel" value="http://localhost:8082/phD_Garden/order/canceled"/>

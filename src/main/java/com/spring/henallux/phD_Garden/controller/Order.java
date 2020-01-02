@@ -43,6 +43,7 @@ public class Order extends BaseController {
 
         Double totalOrder = orderSubtotal - discountTotal;
         model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
+        model.addAttribute("totalPayPal", totalOrder);
 
 
         model.addAttribute("title", getMessageSource().getMessage("checkOut", null, locale));
