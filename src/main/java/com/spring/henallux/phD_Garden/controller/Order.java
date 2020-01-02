@@ -54,4 +54,8 @@ public class Order extends BaseController {
 
         return "integrated:order";
     }
+
+    //TODO success paid
+
+    //TODO not paid canceledOrder
 }
