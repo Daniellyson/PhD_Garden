@@ -19,18 +19,22 @@
                 </ul>
 
                 <div id="nav-tab-paypal" class="tab-pane fade show active">
-                    <p>Paypal is easiest way to pay online</p>
+                    <p> <spring:message code="paypal"/> </p>
 
-                    <!--TODO Details Here-->
+                    <core:set var="itemsTotal" value="${0}" />
+                    <core:forEach items="${shoppingCart}" var="product">
+                        <core:set var="itemsTotal" value="${itemsTotal + product.value}" />
+                    </core:forEach>
+
+                    <p><spring:message code="productAmount"/> : ${itemsTotal}</p>
+                    <p><spring:message code="total"/> : ${totalOrder}</p>
 
 
-
-
-                        <p>
-                            <button id="button-paypal" type="submit" class="btn btn-primary rounded-pill">
-                                <i class="fa fa-paypal mr-2"></i> Log into my Paypal
-                            </button>
-                        </p>
+                    <p>
+                        <button id="button-paypal" type="submit" class="btn btn-primary rounded-pill">
+                            <i class="fa fa-paypal mr-2"></i> <spring:message code="myPaypal" />
+                        </button>
+                    </p>
 
                 </div>
 
