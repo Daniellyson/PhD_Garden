@@ -38,7 +38,7 @@ public class UserEntity {
     @Column(name = "street")
     private String street;
     @Column(name = "house_number")
-    private Integer house_number;
+    private String house_number;
     @Column(name = "postalcode")
     private Integer postalCode;
     @Column(name = "locality")
@@ -134,11 +134,11 @@ public class UserEntity {
         this.street = street;
     }
 
-    public Integer getHouse_number() {
+    public String getHouse_number() {
         return house_number;
     }
 
-    public void setHouse_number(Integer house_number) {
+    public void setHouse_number(String house_number) {
         this.house_number = house_number;
     }
 
