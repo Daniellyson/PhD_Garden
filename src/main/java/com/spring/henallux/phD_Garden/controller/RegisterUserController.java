@@ -64,7 +64,7 @@ public class RegisterUserController extends BaseController {
             errors.rejectValue("email", "invalid.register.emailMatche");
         }
 
-        if (userRegister.getBirthdate().after(new Date())) {
+        if (userRegister.getBirthdate() != null && userRegister.getBirthdate().after(new Date())) {
             errors.rejectValue("birthdate", "invalid.register.birthdate");
         }
 
