@@ -29,7 +29,11 @@ public class ProductConverter {
                     .stream()
                     .map(translationProductEntity -> new TranslationProduct
                             (languageConverter.languageEntityToLanguageModel(translationProductEntity.getTranslationProductLanguageEntityID()),
-                                    translationProductEntity.getProduct_name(), translationProductEntity.getDescription()))
+                                    translationProductEntity.getProduct_name(),
+                                    translationProductEntity.getDescription(),
+                                    ProviderConverter.productEntityToProductModel(translationProductEntity.getTranslationProductEntityID())
+                            )
+                    )
                     .collect(Collectors.toList()));
         }
 
@@ -45,8 +49,12 @@ public class ProductConverter {
         productEntity.setTranslationProductsEntity(product.getTranslationProducts()
                 .stream()
                 .map(translationProduct -> new TranslationProductEntity
-                        (productEntity, languageConverter.languageModelToLanguageEntity(translationProduct.getLanguage()),
-                                translationProduct.getProduct_name(), translationProduct.getDescription()))
+                        (ProviderConverter.productModelToProductEntity(translationProduct.getProduct()),
+                                languageConverter.languageModelToLanguageEntity(translationProduct.getLanguage()),
+                                translationProduct.getProduct_name(),
+                                translationProduct.getDescription()
+                        )
+                )
                 .collect(Collectors.toList()));
 
         return productEntity;

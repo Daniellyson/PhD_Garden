@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProviderConverter {
-    public UserEntity userModelToUserEntity(User user) {
+    public static UserEntity userModelToUserEntity(User user) {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(user.getId());
         userEntity.setUsername(user.getUsername());
@@ -30,7 +30,7 @@ public class ProviderConverter {
         return userEntity;
     }
 
-    public User userEntityToUserModel(UserEntity userEntity) {
+    public static User userEntityToUserModel(UserEntity userEntity) {
         User user = new User();
         user.setId(userEntity.getId());
         user.setUsername(userEntity.getUsername());
@@ -53,73 +53,87 @@ public class ProviderConverter {
         return user;
     }
 
-    public Product productEntityToProductModel(ProductEntity productEntity) {
+    public static Product productEntityToProductModel(ProductEntity productEntity) {
         Product product = new Product();
         product.setId(productEntity.getId());
         product.setPrice(productEntity.getPrice());
         product.setStock(productEntity.getStock());
         product.setUrl_image(productEntity.getUrl_image());
         product.setTranslationProducts(translationProductEntityToTranslationProduct(productEntity.getTranslationProductsEntity()));
-        product.setDiscounts(this.discountEntityToDiscount(productEntity.getDiscounts()));
+        product.setDiscounts(discountEntityToDiscount(productEntity.getDiscounts()));
 
         return product;
     }
 
-    private ProductEntity productModelToProductEntity(Product product) {
+    public static ProductEntity productModelToProductEntity(Product product) {
         ProductEntity productEntity = new ProductEntity();
         productEntity.setId(product.getId());
         productEntity.setPrice(product.getPrice());
         productEntity.setStock(product.getStock());
-        productEntity.setDiscounts(this.discountToDiscountEntity(product.getDiscounts());
+        productEntity.setDiscounts(discountToDiscountEntity(product.getDiscounts()));
 
         return productEntity;
     }
 
-    public TranslationProduct translationProductEntityToTranslationProduct(TranslationProductEntity translationProductEntity) {
-        TranslationProduct translationProduct = new TranslationProduct();
+    public static List<TranslationProduct> translationProductEntityToTranslationProduct(List<TranslationProductEntity> translationProductEntities) {
+        List<TranslationProduct> translationProducts = new ArrayList<>();
 
-        translationProduct.setDescription(translationProductEntity.getDescription());
-        translationProduct.setProduct_name(translationProductEntity.getProduct_name());
-        translationProduct.setLanguage(languageEntityToLanguage(translationProductEntity.getTranslationProductLanguageEntityID()));
+        translationProducts.forEach(translationProduct -> {
+            translationProductEntities.forEach(translationProductEntity -> {
+                translationProduct.setDescription(translationProductEntity.getDescription());
+                translationProduct.setLanguage(languageEntityToLanguage(translationProductEntity.getTranslationProductLanguageEntityID()));
+                translationProduct.setProduct_name(translationProductEntity.getProduct_name());
+            });
+        });
 
-        return translationProduct;
+        return translationProducts;
     }
 
-    public TranslationProductEntity translationProductToTranslationProductEntity(TranslationProduct translationProduct) {
-        TranslationProductEntity translationProductEntity = new TranslationProductEntity();
+    public static List<TranslationProductEntity> translationProductToTranslationProductEntity(List<TranslationProduct> translationProducts) {
+        List<TranslationProductEntity> translationProductEntities = new ArrayList<>();
 
-        translationProductEntity.setDescription(translationProduct.getDescription());
-        translationProductEntity.setProduct_name(translationProduct.getProduct_name());
+        translationProductEntities.forEach(translationProductEntity -> {
+            translationProducts.forEach(translationProduct -> {
+                translationProductEntity.setDescription(translationProduct.getDescription());
+                translationProductEntity.setTranslationProductEntityID(productModelToProductEntity(translationProduct.getProduct()));
+                translationProductEntity.setTranslationProductLanguageEntityID(languageToLanguageEntity(translationProduct.getLanguage()));
+                translationProductEntity.setProduct_name(translationProduct.getProduct_name());
+            });
+        });
 
-        translationProductEntity.setTranslationProductLanguageEntityID(languageToLanguageEntity(translationProduct.getLanguage()));
-        translationProductEntity.setTranslationProductEntityID(this.productModelToProductEntity(translationProduct.get));
-        return translationProductEntity;
+        return translationProductEntities;
     }
 
-    public List<Discount> discountEntityToDiscount(List<DiscountEntity> discountEntity) {
-        List<Discount> discount = new ArrayList<>();
+    public static List<Discount> discountEntityToDiscount(List<DiscountEntity> discountEntities) {
+        List<Discount> discounts = new ArrayList<>();
 
-        discount.forEach();
-        discount.setId(discountEntity.getId());
-        discount.setEndDate(discountEntity.getEndDate());
-        discount.setPercentage(discountEntity.getPercentage());
-        discount.setStartDate(discountEntity.getStartDate());
-
-        return discount;
+        discounts.forEach(discount -> {
+            discountEntities.forEach(discountEntity -> {
+                discount.setId(discountEntity.getId());
+                discount.setEndDate(discountEntity.getEndDate());
+                discount.setPercentage(discountEntity.getPercentage());
+                discount.setStartDate(discountEntity.getStartDate());
+            });
+        });
+        return discounts;
     }
 
-    public DiscountEntity discountToDiscountEntity(Discount discount) {
-        DiscountEntity discountEntity = new DiscountEntity();
+    public static List<DiscountEntity> discountToDiscountEntity(List<Discount> discounts) {
+        List<DiscountEntity> discountEntities = new ArrayList<>();
 
-        discountEntity.setId(discount.getId());
-        discountEntity.setEndDate(discount.getEndDate());
-        discountEntity.setPercentage(discount.getPercentage());
-        discountEntity.setStartDate(discount.getStartDate());
-
-        return discountEntity;
+        discountEntities.forEach(discountEntity -> {
+            discounts.forEach(discount -> {
+                discountEntity.setId(discount.getId());
+                discountEntity.setEndDate(discount.getEndDate());
+                discountEntity.setPercentage(discount.getPercentage());
+                discountEntity.setStartDate(discount.getStartDate());
+                discountEntity.setProductEntity(productModelToProductEntity(discount.getProduct()));
+            });
+        });
+        return discountEntities;
     }
 
-    public Language languageEntityToLanguage(LanguageEntity languageEntity) {
+    public static Language languageEntityToLanguage(LanguageEntity languageEntity) {
         Language language = new Language();
 
         language.setId(languageEntity.getId());
@@ -128,7 +142,7 @@ public class ProviderConverter {
         return  language;
     }
 
-    public LanguageEntity languageToLanguageEntity(Language language) {
+    public static LanguageEntity languageToLanguageEntity(Language language) {
         LanguageEntity languageEntity = new LanguageEntity();
 
         languageEntity.setId(language.getId());
@@ -138,39 +152,39 @@ public class ProviderConverter {
     }
 
 
-        public Order orderEntityToOrderModel(OrderEntity orderEntity) {
+    public static Order orderEntityToOrderModel(OrderEntity orderEntity) {
         Order order = new Order();
         order.setId(orderEntity.getOrderId());
         order.setOrderDate(orderEntity.getCreationDate());
-        order.setUser(this.userEntityToUserModel(orderEntity.getUser()));
+        order.setUser(userEntityToUserModel(orderEntity.getUser()));
         order.setPaid(orderEntity.getPaid());
         return order;
     }
 
-    public OrderEntity orderModelToOrderEntity(Order order) {
+    public static OrderEntity orderModelToOrderEntity(Order order) {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setOrderId(order.getId());
         orderEntity.setCreationDate(order.getOrderDate());
-        orderEntity.setUser(this.userModelToUserEntity(order.getUser()));
+        orderEntity.setUser(userModelToUserEntity(order.getUser()));
         orderEntity.setPaid(order.getPaid());
         return orderEntity;
     }
 
-    public OrderLine orderLineEntityToOrderLineModel(OrderLineEntity orderLineEntity) {
+    public static OrderLine orderLineEntityToOrderLineModel(OrderLineEntity orderLineEntity) {
         OrderLine orderLine = new OrderLine();
         orderLine.setId(orderLineEntity.getOrderLineId());
-        orderLine.setOrder(this.orderEntityToOrderModel(orderLineEntity.getOrder()));
-        orderLine.setProduct(this.productEntityToProductModel(orderLineEntity.getProduct()));
+        orderLine.setOrder(orderEntityToOrderModel(orderLineEntity.getOrder()));
+        orderLine.setProduct(productEntityToProductModel(orderLineEntity.getProduct()));
         orderLine.setQuantity(orderLineEntity.getQuantity());
         orderLine.setUnitPrice(orderLineEntity.getUnitPrice());
         return orderLine;
     }
 
-    public OrderLineEntity orderLineModelToOrderLineEntity(OrderLine orderLine) {
+    public static OrderLineEntity orderLineModelToOrderLineEntity(OrderLine orderLine) {
         OrderLineEntity orderLineEntity = new OrderLineEntity();
         orderLineEntity.setOrderLineId(orderLine.getId());
-        orderLineEntity.setOrder(this.orderModelToOrderEntity(orderLine.getOrder()));
-        orderLineEntity.setProduct(this.productModelToProductEntity(orderLine.getProduct()));
+        orderLineEntity.setOrder(orderModelToOrderEntity(orderLine.getOrder()));
+        orderLineEntity.setProduct(productModelToProductEntity(orderLine.getProduct()));
         orderLineEntity.setQuantity(orderLine.getQuantity());
         orderLineEntity.setUnitPrice(orderLine.getUnitPrice());
         return orderLineEntity;

@@ -14,6 +14,7 @@ public class Discount {
     private Integer percentage;
     private Date startDate;
     private Date endDate;
+    private Product product;
 
     public Integer getId() {
         return id;
@@ -45,5 +46,13 @@ public class Discount {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

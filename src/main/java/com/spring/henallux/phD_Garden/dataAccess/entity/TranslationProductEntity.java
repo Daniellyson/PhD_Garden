@@ -15,7 +15,6 @@ import java.io.Serializable;
 @Embeddable
 @Table(name="translation_product")
 @NoArgsConstructor
-@AllArgsConstructor
 public class TranslationProductEntity implements Serializable {
 
     @EmbeddedId
@@ -31,6 +30,12 @@ public class TranslationProductEntity implements Serializable {
     private String product_name;
     private String description;
 
+    public TranslationProductEntity(ProductEntity translationProductEntityID, LanguageEntity translationProductLanguageEntityID, String product_name, String description) {
+        this.translationProductEntityID = translationProductEntityID;
+        this.translationProductLanguageEntityID = translationProductLanguageEntityID;
+        this.product_name = product_name;
+        this.description = description;
+    }
 
     public ProductEntity getTranslationProductEntityID() {
         return translationProductEntityID;
