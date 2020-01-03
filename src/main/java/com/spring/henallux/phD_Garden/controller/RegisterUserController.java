@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Locale;
 
 @Controller
@@ -53,6 +54,14 @@ public class RegisterUserController {
 
         if (this.userService.existsByUsername(userRegister.getUsername())) {
             errors.rejectValue("username", "invalid.register.usernameTaken");
+        }
+
+        if (!userRegister.getEmail().matches("\\w+@\\w+\\.\\w+")) {
+            errors.rejectValue("email", "invalid.register.emailMatche");
+        }
+
+        if (userRegister.getBirthdate().after(new Date())) {
+            errors.rejectValue("birthdate", "invalid.register.birthdate");
         }
 
         if (errors.hasErrors()) {

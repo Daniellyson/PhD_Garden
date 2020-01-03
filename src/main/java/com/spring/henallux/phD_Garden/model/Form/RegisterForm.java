@@ -1,5 +1,6 @@
 package com.spring.henallux.phD_Garden.model.Form;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Max;
@@ -28,6 +29,7 @@ public class RegisterForm {
     @NotBlank
     private String email;
 
+    @Length(max = 15)
     private String phone;
 
     @DateTimeFormat( pattern = "yyyy-MM-dd" )

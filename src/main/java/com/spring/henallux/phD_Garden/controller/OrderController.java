@@ -57,8 +57,6 @@ public class OrderController extends BaseController {
 
         discountTotal = 0.0;
 
-        shoppingCart = new HashMap<>();
-
         return "integrated:order";
     }
 
