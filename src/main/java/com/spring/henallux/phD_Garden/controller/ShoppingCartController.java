@@ -1,18 +1,17 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
-import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.service.ProductService;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
+
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -29,13 +28,14 @@ public class ShoppingCartController extends BaseController {
 
     private Double discountTotal = 0.0;
 
+    @Getter
     private HashMap<Integer, Double> discounts = new HashMap<>();
 
     @RequestMapping(method= RequestMethod.GET)
     public String shoppingCart(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
-                               //@ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
                                Model model,
                                Locale locale) {
+
         model.addAttribute("title", getMessageSource().getMessage("shoppingCart", null, locale));
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
@@ -55,7 +55,6 @@ public class ShoppingCartController extends BaseController {
 
         return "integrated:shopping-cart";
     }
-
 
     @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)
     public String shoppingCart(
