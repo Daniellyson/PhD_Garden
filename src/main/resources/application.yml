@@ -5,4 +5,4 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/phd_garden?user=root&serverTimezone=UTC
-    password: root
+    password: Password

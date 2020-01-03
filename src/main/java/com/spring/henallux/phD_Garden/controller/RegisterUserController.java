@@ -39,6 +39,8 @@ public class RegisterUserController extends BaseController {
 
 
         model.addAttribute("title",  messageSource.getMessage("menu.register",null,locale));
+        model.addAttribute("locale", locale.getLanguage());
+        model.addAttribute("categories", categories());
         return "integrated:register";
     }
 

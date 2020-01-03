@@ -1,7 +1,6 @@
 <%@ include file="include/importTags.jsp" %>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 
-
 <div class="my-5 container">
     <div class="card card-default">
         <div class="card-header"><spring:message code="register.register" /></div>
