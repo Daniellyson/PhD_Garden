@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -56,6 +57,22 @@ public class Order extends BaseController {
     }
 
     //TODO success paid
+    @RequestMapping(value = "/succeed", method= RequestMethod.GET)
+    public String successOrder(
+            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
+            Locale locale) {
+
+
+
+        shoppingCart.clear();
+
+        return "redirect:/home";
+    }
 
     //TODO not paid canceledOrder
+    @RequestMapping(value = "/canceled", method= RequestMethod.GET)
+    public String canceledOrder() {
+
+        return "redirect:/order";
+    }
 }

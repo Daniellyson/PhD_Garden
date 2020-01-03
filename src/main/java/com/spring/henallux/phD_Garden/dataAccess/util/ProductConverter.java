@@ -39,15 +39,9 @@ public class ProductConverter {
     public ProductEntity productModelToProductEntity(Product product) {
         ProductEntity productEntity = new ProductEntity();
 
-        productEntity.setId(product.getId());
-        productEntity.setPrice(product.getPrice());
+
         productEntity.setStock(product.getStock());
-        productEntity.setTranslationProductsEntity(product.getTranslationProducts()
-                .stream()
-                .map(translationProduct -> new TranslationProductEntity
-                        (productEntity, languageConverter.languageModelToLanguageEntity(translationProduct.getLanguage()),
-                                translationProduct.getProduct_name(), translationProduct.getDescription()))
-                .collect(Collectors.toList()));
+
 
         return productEntity;
     }
