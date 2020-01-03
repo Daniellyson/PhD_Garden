@@ -1,12 +1,15 @@
 package com.spring.henallux.phD_Garden.model.Form;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.print.DocFlavor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.lang.annotation.ElementType;
 import java.util.Date;
 
 public class RegisterForm {
