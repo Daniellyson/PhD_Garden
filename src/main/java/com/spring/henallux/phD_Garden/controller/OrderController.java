@@ -38,6 +38,10 @@ public class OrderController extends BaseController {
                         Locale locale,
                         Authentication authentication) {
 
+        if(shoppingCart.isEmpty()) {
+            return "integrated:/ShoppingCart";
+        }
+
         Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
 
         for (Map.Entry entry : shoppingCartController.getDiscounts().entrySet()) {

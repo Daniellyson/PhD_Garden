@@ -43,7 +43,7 @@
                     </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
                          <a class="text-white login" href="<spring:url value='/login'/>"> <spring:message code="logIn" /> </a>
-                         <a class="btn btn-light action-button" role="button" href="register"> <spring:message code="signUp" /> </a>
+                         <a class="btn btn-light action-button" role="button" href="<core:url value='/register'/>"> <spring:message code="signUp" /> </a>
                     </sec:authorize>
                </span>
 

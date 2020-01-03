@@ -21,7 +21,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/register")
-public class RegisterUserController {
+public class RegisterUserController extends BaseController {
     private UserService userService;
     private MessageSource messageSource;
 
@@ -47,6 +47,8 @@ public class RegisterUserController {
     public String getFormData(Model model,
                               @Valid @ModelAttribute(Constants.USER_REGISTERING_DETAILS) RegisterForm userRegister,
                               BindingResult errors) {
+
+        model.addAttribute("categories", categories());
 
         if (!userRegister.getPassword().equals(userRegister.getConfirmPassword())) {
             errors.rejectValue("confirmPassword", "invalid.register.differentPassword");
