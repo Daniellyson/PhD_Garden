@@ -21,7 +21,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/register")
-public class RegisterUserController {
+public class RegisterUserController extends BaseController {
     private UserService userService;
     private MessageSource messageSource;
 
@@ -39,6 +39,8 @@ public class RegisterUserController {
 
 
         model.addAttribute("title",  messageSource.getMessage("menu.register",null,locale));
+        model.addAttribute("locale", locale.getLanguage());
+        model.addAttribute("categories", categories());
         return "integrated:register";
     }
 

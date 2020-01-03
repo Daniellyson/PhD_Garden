@@ -14,7 +14,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/authenticated")
-public class AuthenticatedController {
+public class AuthenticatedController extends BaseController {
     private MessageSource messageSource;
 
     @Autowired
