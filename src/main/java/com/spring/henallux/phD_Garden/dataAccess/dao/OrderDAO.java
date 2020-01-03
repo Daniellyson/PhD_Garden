@@ -23,6 +23,6 @@ public class OrderDAO implements IOrderDataAccess {
     @Override
     public Order create(OrderEntity orderEntity) {
         OrderEntity orderEntitySaved = this.orderRepository.save(orderEntity);
-        return new ProviderConverter().orderEntityToOrderModel(orderEntitySaved);
+        return ProviderConverter.orderEntityToOrderModel(orderEntitySaved);
     }
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value="/order")
-public class Order extends BaseController {
+public class OrderController extends BaseController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
@@ -34,13 +35,16 @@ public class Order extends BaseController {
     @RequestMapping(method= RequestMethod.GET)
     public String order(@ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
                         Model model,
-                        Locale locale) {
+                        Locale locale,
+                        Authentication authentication) {
 
         Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
 
         for (Map.Entry entry : shoppingCartController.getDiscounts().entrySet()) {
             discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
         }
+
+        shoppingCartService.saveCart(shoppingCart, authentication);
 
         Double totalOrder = orderSubtotal - discountTotal;
         model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
@@ -52,6 +56,8 @@ public class Order extends BaseController {
         model.addAttribute("categories", categories());
 
         discountTotal = 0.0;
+
+        shoppingCart = new HashMap<>();
 
         return "integrated:order";
     }
@@ -66,7 +72,7 @@ public class Order extends BaseController {
 
         shoppingCart.clear();
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     //TODO not paid canceledOrder

@@ -30,27 +30,22 @@ public class ShoppingCartService {
     }
 
     @Transactional
-    public void saveCart(HashMap<Integer, ProductCart> cart,
+    public void saveCart(HashMap<Product, Integer> cart,
                          Authentication authentication) {
         Order order = new Order();
-        order.setUser(new ProviderConverter().userEntityToUserModel((UserEntity) authentication.getPrincipal()));
+        order.setUser((User) authentication.getPrincipal());
         order.setOrderDate(new Date());
         order.setPaid(false);
         Order createdOrder = this.orderService.create(order);
 
-        for (Map.Entry<Integer, ProductCart> cartItem : cart.entrySet()) {
-            ProductCart item = cartItem.getValue();
+        for (Map.Entry<Product, Integer> cartItem : cart.entrySet()) {
+            Product item = cartItem.getKey();
 
             OrderLine orderLine = new OrderLine();
-            orderLine.setProduct(item.getProduct());
+            orderLine.setProduct(item);
             orderLine.setOrder(createdOrder);
-            orderLine.setQuantity(item.getQuantity());
-            orderLine.setUnitPrice(
-                    orderLineService.getPrice(
-                            item.getQuantity(),
-                            item.getProduct()
-                    )
-            );
+            orderLine.setQuantity(cartItem.getValue());
+            orderLine.setUnitPrice(item.getPrice());
             this.orderLineService.save(orderLine);
         }
     }

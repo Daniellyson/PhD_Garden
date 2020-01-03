@@ -18,6 +18,6 @@ public class OrderService {
     }
 
     public Order create(Order order) {
-        return this.orderDAO.create(new ProviderConverter().orderModelToOrderEntity(order));
+        return this.orderDAO.create(ProviderConverter.orderModelToOrderEntity(order));
     }
 }

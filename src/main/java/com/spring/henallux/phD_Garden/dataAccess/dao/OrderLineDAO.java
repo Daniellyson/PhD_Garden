@@ -22,8 +22,8 @@ public class OrderLineDAO implements IOrderLineDataAccess {
 
     @Override
     public OrderLine save(OrderLine orderLine) {
-        OrderLineEntity orderLineEntity = new ProviderConverter().orderLineModelToOrderLineEntity(orderLine);
+        OrderLineEntity orderLineEntity = ProviderConverter.orderLineModelToOrderLineEntity(orderLine);
         OrderLineEntity newOrderLineEntity = this.orderLineRepository.save(orderLineEntity);
-        return new ProviderConverter().orderLineEntityToOrderLineModel(newOrderLineEntity);
+        return ProviderConverter.orderLineEntityToOrderLineModel(newOrderLineEntity);
     }
 }

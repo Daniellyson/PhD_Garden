@@ -47,6 +47,6 @@ public class Order {
     }
 
     public void setPaid(Boolean paid) {
-        paid = paid;
+        this.paid = paid;
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class OrderLineEntity {
     @Id
     @Column(name = "id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderLineId;
 
     @OneToOne(fetch = FetchType.LAZY)

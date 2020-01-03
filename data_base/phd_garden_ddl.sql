@@ -39,8 +39,8 @@ CREATE TABLE customer (
 
 create table customer_order (
 	id int primary key auto_increment,
-    order_date date not null,
-    paid tinyint(1) not null,
+    order_date date,
+    paid tinyint(1),
     
     customer_id int not null references customer(id)
 );

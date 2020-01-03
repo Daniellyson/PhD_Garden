@@ -6,12 +6,12 @@ import java.util.Date;
 @Entity(name = "customer_order")
 public class OrderEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer orderId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "customer_id",referencedColumnName = "id")
     private UserEntity user;
 
     @Column(name = "order_date")
