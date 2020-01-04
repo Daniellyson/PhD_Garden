@@ -25,8 +25,8 @@
         <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
     </definition>
 
-    <!--<definition name="error" extends="template-main">
-        <put-attribute name="main-content" value="/WEB-INF/jsp/error.jsp" />
-    </definition>-->
+    <definition name="error" template="/WEB-INF/jsp/template/error-template.jsp">
+        <put-attribute name="content" value="/WEB-INF/jsp/error.jsp" />
+    </definition>
 
 </tiles-definitions>
