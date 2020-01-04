@@ -46,6 +46,8 @@
                     <core:forEach items="${discounts}" var="discount">
 
                         <core:if test="${product.id == discount.key}">
+                            <core:set var="startDate" value="${discount.value.startDate}" />
+                            <core:set var="endDate" value="${discount.value.endDate}" />
                             <core:set var="percentageDiscount" value="${discount.value.percentage}" />
                             <span class="discounts"> (${discount.value.percentage}% <spring:message code="discount"></spring:message>) </span>
                         </core:if>
@@ -63,7 +65,9 @@
 
                         <input type="hidden" name="origin" value="/products_Category/${currentCategory.id}"/>
 
-                        <input type="hidden" name="percentage" value="${percentageDiscount}"/>
+                        <core:if test="${today > startDate && today < endDate}">
+                            <input type="hidden" name="percentage" value="${percentageDiscount}"/>
+                        </core:if>
 
                         <button type="submit"><spring:message code="addToBasket" /></button>
                     </form>

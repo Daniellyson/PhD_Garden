@@ -29,7 +29,6 @@ public class ProductController extends BaseController {
     public String product(@PathVariable("id") Integer id,
                           @ModelAttribute(value = Constants.DISCOUNTS) HashMap<Integer, Discount> discounts,
                           Model model,
-                          RedirectAttributes redirectAttributes,
                           Locale locale) {
 
         model.addAttribute("title", getMessageSource().getMessage("productbyCategory", null, locale));
@@ -42,22 +41,20 @@ public class ProductController extends BaseController {
         model.addAttribute("products", products);
 
         Date today = new Date();
+        model.addAttribute("today", today);
 
         for (Product product : products) {
-            List<Discount> discountList = getDiscountService().getAllDiscountById(new Date(), product.getId());
-            int oldDiscount = 0;
+
+            List<Discount> discountList = getDiscountService().getAllDiscountById(product.getId());
             for (Discount discount : discountList) {
                 if(discount != null) {
                     if(today.after(discount.getStartDate()) && today.before(discount.getEndDate())) {
-                        if(oldDiscount < discount.getPercentage()) {
-                            discounts.put(product.getId(), discount);
-                            oldDiscount = discount.getPercentage();
-                        }
-
+                        discounts.put(product.getId(), discount);
                     }
                 }
             }
         }
+
         return "integrated:product";
     }
 
