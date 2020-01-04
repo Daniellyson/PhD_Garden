@@ -29,8 +29,6 @@ public class UserDAO implements UserDataAccess {
         }else {
             throw new UsernameNotFoundException("User not found");
         }
-
-
     }
 
     @Override

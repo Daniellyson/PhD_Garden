@@ -44,11 +44,16 @@ public class ProductController extends BaseController {
         Date today = new Date();
 
         for (Product product : products) {
-            List<Discount> discountList = getDiscountService().getAllDiscountById(product.getId());
+            List<Discount> discountList = getDiscountService().getAllDiscountById(new Date(), product.getId());
+            int oldDiscount = 0;
             for (Discount discount : discountList) {
                 if(discount != null) {
                     if(today.after(discount.getStartDate()) && today.before(discount.getEndDate())) {
-                        discounts.put(product.getId(), discount);
+                        if(oldDiscount < discount.getPercentage()) {
+                            discounts.put(product.getId(), discount);
+                            oldDiscount = discount.getPercentage();
+                        }
+
                     }
                 }
             }

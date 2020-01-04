@@ -39,7 +39,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // We define the authorization here
                 .antMatchers(AUTHORIZED_REQUESTS_ADMIN).hasRole("ADMIN") // For the request to "/admin", the user needs to be an admin
                 .antMatchers(AUTHORIZED_REQUESTS_ANYBODY).permitAll() // For the request to the index page, any user has access
-                .anyRequest().authenticated() // For all the other requests, the user needs to be authenticated
+                //.anyRequest().authenticated() // For all the other requests, the user needs to be authenticated
 
                 .and()
                 .formLogin() // We define the login part here.

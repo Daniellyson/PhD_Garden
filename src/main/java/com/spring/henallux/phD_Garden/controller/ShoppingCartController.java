@@ -1,6 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
+import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.service.ProductService;
@@ -40,20 +41,26 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
-        Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
-        model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
+        try {
+            Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
 
-        for (Map.Entry entry : discounts.entrySet()) {
-            discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+            model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
+
+            for (Map.Entry entry : discounts.entrySet()) {
+                discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+            }
+            model.addAttribute("discount", String.format("%.2f", discountTotal));
+
+            Double totalOrder = orderSubtotal - discountTotal;
+            model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
+
+            discountTotal = 0.0;
+
+            return "integrated:shopping-cart";
+        }catch (QuantityException q ) {
+            return "integrated:shopping-cart";
         }
-        model.addAttribute("discount", String.format("%.2f", discountTotal));
 
-        Double totalOrder = orderSubtotal - discountTotal;
-        model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
-
-        discountTotal = 0.0;
-
-        return "integrated:shopping-cart";
     }
 
     @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)

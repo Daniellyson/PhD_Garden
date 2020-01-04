@@ -1,7 +1,6 @@
 package com.spring.henallux.phD_Garden.service;
 
-import com.spring.henallux.phD_Garden.dataAccess.entity.UserEntity;
-import com.spring.henallux.phD_Garden.dataAccess.util.ProviderConverter;
+import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,6 +28,9 @@ public class ShoppingCartService {
         this.discountService = discountService;
     }
 
+    public ShoppingCartService() {
+    }
+
     @Transactional
     public void saveCart(HashMap<Product, Integer> cart,
                          Authentication authentication) {
@@ -50,12 +52,16 @@ public class ShoppingCartService {
         }
     }
 
-    public Double calculationTotalPrice(HashMap<Product, Integer> shoppingCart) {
+    public double calculationTotalPrice(HashMap<Product, Integer> shoppingCart) throws QuantityException {
+
         double totalPrice = 0.0;
 
         Collection<Product> keys = shoppingCart.keySet();
         for(Product key: keys){
 
+            if(shoppingCart.get(key) < 1) {
+                throw new QuantityException();
+            }
             totalPrice += key.getPrice() * shoppingCart.get(key);
         }
 
@@ -69,7 +75,7 @@ public class ShoppingCartService {
 
         for (Product product : products) {
 
-            if(product.getId() == key) {
+            if(product.getId().equals(key)) {
                 totalDiscount += product.getPrice() * discount * shoppingCart.get(product);
             }
         }
