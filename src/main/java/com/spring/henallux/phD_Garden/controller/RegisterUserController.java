@@ -64,6 +64,18 @@ public class RegisterUserController extends BaseController {
             errors.rejectValue("email", "invalid.register.emailMatche");
         }
 
+        if (!userRegister.getPhone().matches("^[0-9-+]{9,15}$")) {
+            errors.rejectValue("phone", "invalid.register.phoneMatche");
+        }
+
+        if (!userRegister.getLocality().matches("^[A-z,' -]+$")) {
+            errors.rejectValue("locality", "invalid.register.localityMatche");
+        }
+
+        if (!userRegister.getStreet().matches("^[A-z,' -]+$")) {
+            errors.rejectValue("street", "invalid.register.streetMatche");
+        }
+
         if (userRegister.getBirthdate() != null && userRegister.getBirthdate().after(new Date())) {
             errors.rejectValue("birthdate", "invalid.register.birthdate");
         }
