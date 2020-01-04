@@ -48,62 +48,7 @@ public class ShoppingCartServiceTest {
         discountDAO = new DiscountDAO(discountRepository, discountConverter);
     }
 
-    @Test
-    public void successExistsByUsernameTest() {
 
-        List<DiscountEntity> mokedDiscounts = new ArrayList<>();
-        DiscountEntity discount1 = new DiscountEntity();
-        discount1.setId(1);
-        DiscountEntity discount2 = new DiscountEntity();
-        discount2.setId(2);
-        mokedDiscounts.add(discount1);
-        mokedDiscounts.add(discount2);
-
-        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
-
-        List<DiscountEntity> discounts = new ArrayList<>();
-        DiscountEntity discount3 = new DiscountEntity();
-        discount3.setId(1);
-        DiscountEntity discount4 = new DiscountEntity();
-        discount4.setId(2);
-        discounts.add(discount3);
-        discounts.add(discount4);
-
-        DiscountEntity discount = new DiscountEntity();
-        discount.setId(1);
-        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
-
-        assertEquals(discount.getId(),  discounts.get(0).getId());
-    }
-
-    @Test
-    public void failExistsByUsernameTest() {
-
-        List<DiscountEntity> mokedDiscounts = new ArrayList<>();
-        DiscountEntity discount1 = new DiscountEntity();
-        discount1.setId(1);
-        DiscountEntity discount2 = new DiscountEntity();
-        discount2.setId(2);
-        mokedDiscounts.add(discount1);
-        mokedDiscounts.add(discount2);
-
-        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
-
-        List<DiscountEntity> discounts = new ArrayList<>();
-        DiscountEntity discount3 = new DiscountEntity();
-        discount3.setId(1);
-        DiscountEntity discount4 = new DiscountEntity();
-        discount4.setId(2);
-        discounts.add(discount3);
-        discounts.add(discount4);
-
-        DiscountEntity discount = new DiscountEntity();
-        discount.setId(5);
-        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
-
-        assertNotEquals(discount.getId(),  discounts.get(0).getId());
-
-    }
 
     @Test
     public void calculationTotalPriceWithOneTest() throws QuantityException {
@@ -179,6 +124,63 @@ public class ShoppingCartServiceTest {
 
 
         shoppingCartService.calculationTotalPrice(shoppingCart);
+
+    }
+
+    @Test
+    public void successExistsByUsernameTest() {
+
+        List<DiscountEntity> mokedDiscounts = new ArrayList<>();
+        DiscountEntity discount1 = new DiscountEntity();
+        discount1.setId(1);
+        DiscountEntity discount2 = new DiscountEntity();
+        discount2.setId(2);
+        mokedDiscounts.add(discount1);
+        mokedDiscounts.add(discount2);
+
+        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
+
+        List<DiscountEntity> discounts = new ArrayList<>();
+        DiscountEntity discount3 = new DiscountEntity();
+        discount3.setId(1);
+        DiscountEntity discount4 = new DiscountEntity();
+        discount4.setId(2);
+        discounts.add(discount3);
+        discounts.add(discount4);
+
+        DiscountEntity discount = new DiscountEntity();
+        discount.setId(1);
+        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
+
+        assertEquals(discount.getId(),  discounts.get(0).getId());
+    }
+
+    @Test
+    public void failExistsByUsernameTest() {
+
+        List<DiscountEntity> mokedDiscounts = new ArrayList<>();
+        DiscountEntity discount1 = new DiscountEntity();
+        discount1.setId(1);
+        DiscountEntity discount2 = new DiscountEntity();
+        discount2.setId(2);
+        mokedDiscounts.add(discount1);
+        mokedDiscounts.add(discount2);
+
+        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
+
+        List<DiscountEntity> discounts = new ArrayList<>();
+        DiscountEntity discount3 = new DiscountEntity();
+        discount3.setId(1);
+        DiscountEntity discount4 = new DiscountEntity();
+        discount4.setId(2);
+        discounts.add(discount3);
+        discounts.add(discount4);
+
+        DiscountEntity discount = new DiscountEntity();
+        discount.setId(5);
+        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
+
+        assertNotEquals(discount.getId(),  discounts.get(0).getId());
 
     }
 }
