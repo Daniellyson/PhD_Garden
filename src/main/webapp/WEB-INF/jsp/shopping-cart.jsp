@@ -131,9 +131,16 @@
                                     </h5>
                                 </li>
                             </ul>
-                            <a href="<core:url value='/order' />" class="btn btn-dark rounded-pill py-2 btn-block">
-                                <spring:message code="procceedToCheckout"/>
-                            </a>
+                            <core:if test="${shoppingCart.size() > 0}">
+                                <sec:authorize access="isAuthenticated()">
+                                    <a href="<core:url value='/order' />" class="btn btn-dark rounded-pill py-2 btn-block">
+                                        <spring:message code="procceedToCheckout"/>
+                                    </a>
+                                </sec:authorize>
+                            </core:if>
+                            <sec:authorize access="!isAuthenticated()">
+                                <spring:message code="pleaseLogin"/>
+                            </sec:authorize>
                         </div>
                     </div>
 
