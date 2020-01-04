@@ -41,12 +41,15 @@ public class ProductController extends BaseController {
         List<Product> products = productService.loadAllProductsByCategory(id);
         model.addAttribute("products", products);
 
+        Date today = new Date();
 
         for (Product product : products) {
             List<Discount> discountList = getDiscountService().getAllDiscountById(product.getId());
             for (Discount discount : discountList) {
                 if(discount != null) {
-                    discounts.put(product.getId(), discount);
+                    if(today.after(discount.getStartDate()) && today.before(discount.getEndDate())) {
+                        discounts.put(product.getId(), discount);
+                    }
                 }
             }
         }

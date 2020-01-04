@@ -76,10 +76,9 @@ create table order_line (
 create table discount (
 	id int primary key auto_increment,
     percentage int(3) not null,
-    start_date date,
-    end_date date,
+    start_date date not null,
+    end_date date not null,
     
-    category_id int references category(id),
     product_id int references product(id),
     CHECK(percentage > 0)
 );
