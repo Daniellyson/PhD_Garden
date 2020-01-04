@@ -8,6 +8,7 @@ import com.spring.henallux.phD_Garden.model.Discount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +27,13 @@ public class DiscountDAO implements DiscountDataAccess {
     @Override
     public List<Discount> getAllByDiscount(Integer id) {
         return discountRepository.findAllById(id).stream()
+                .map(discountEntity -> discountConverter.discountEntityToDiscountModel(discountEntity))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Discount> getAllByDiscount(Date currentDate, Integer id) {
+        return discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(currentDate, currentDate, id).stream()
                 .map(discountEntity -> discountConverter.discountEntityToDiscountModel(discountEntity))
                 .collect(Collectors.toList());
     }

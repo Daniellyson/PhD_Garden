@@ -1,6 +1,7 @@
 package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
+import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.service.ProductService;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -41,21 +41,26 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
+        try {
+            Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
 
-        Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
-        model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
+            model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
 
-        for (Map.Entry entry : discounts.entrySet()) {
-            discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+            for (Map.Entry entry : discounts.entrySet()) {
+                discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+            }
+            model.addAttribute("discount", String.format("%.2f", discountTotal));
+
+            Double totalOrder = orderSubtotal - discountTotal;
+            model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
+
+            discountTotal = 0.0;
+
+            return "integrated:shopping-cart";
+        }catch (QuantityException q ) {
+            return "integrated:shopping-cart";
         }
-        model.addAttribute("discount", String.format("%.2f", discountTotal));
 
-        Double totalOrder = orderSubtotal - discountTotal;
-        model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
-
-        discountTotal = 0.0;
-
-        return "integrated:shopping-cart";
     }
 
     @RequestMapping(value = "/add/{id}", method= RequestMethod.GET)
@@ -68,30 +73,21 @@ public class ShoppingCartController extends BaseController {
             Model model,
             Locale locale) {
 
-        System.out.println(discount);
-
         Product product = productService.loadProduct(id);
 
         if(shoppingCart.get(product) != null) {
             shoppingCart.put(product, shoppingCart.get(product) + quantity);
         } else {
+
             shoppingCart.put(product, quantity);
         }
 
-
-
         if(id != null && discount != null) {
-            Double percentage = (discount/100.0);
-            if (discounts.containsKey(id)) {
-                Double discountInHashMap = discounts.get(id);
-                if (percentage > discountInHashMap) {
-                    discounts.replace(id, percentage);
-                }
-            } else {
+            if(!discounts.containsKey(id)) {
+                Double percentage = (discount/100.0);
                 discounts.put(id, percentage);
             }
         }
-
         return "redirect:" + origin;
     }
 

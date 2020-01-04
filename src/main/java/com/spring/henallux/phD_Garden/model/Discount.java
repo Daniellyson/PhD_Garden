@@ -16,6 +16,14 @@ public class Discount {
     private Date endDate;
     private Product product;
 
+    public Discount(Integer id, Integer percentage, Date startDate, Date endDate, Product product) {
+        this.id = id;
+        this.percentage = percentage;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.product = product;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -21,4 +21,19 @@ public class DiscountConverter {
 
         return discount;
     }
+
+    public DiscountEntity discountModelToDiscountEntity(Discount discount) {
+        DiscountEntity discountEntity = null;
+
+        if(discountEntity != null) {
+            discountEntity = new DiscountEntity();
+
+            discountEntity.setId(discount.getId());
+            discountEntity.setPercentage(discount.getPercentage());
+            discountEntity.setStartDate(discount.getStartDate());
+            discountEntity.setEndDate(discount.getEndDate());
+        }
+
+        return discountEntity;
+    }
 }
