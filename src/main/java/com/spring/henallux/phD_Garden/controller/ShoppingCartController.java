@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -40,6 +41,7 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
+
         Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
         model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
 
@@ -66,21 +68,30 @@ public class ShoppingCartController extends BaseController {
             Model model,
             Locale locale) {
 
+        System.out.println(discount);
+
         Product product = productService.loadProduct(id);
 
         if(shoppingCart.get(product) != null) {
             shoppingCart.put(product, shoppingCart.get(product) + quantity);
         } else {
-
             shoppingCart.put(product, quantity);
         }
 
+
+
         if(id != null && discount != null) {
-            if(!discounts.containsKey(id)) {
-                Double percentage = (discount/100.0);
+            Double percentage = (discount/100.0);
+            if (discounts.containsKey(id)) {
+                Double discountInHashMap = discounts.get(id);
+                if (percentage > discountInHashMap) {
+                    discounts.replace(id, percentage);
+                }
+            } else {
                 discounts.put(id, percentage);
             }
         }
+
         return "redirect:" + origin;
     }
 
