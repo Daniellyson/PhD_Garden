@@ -83,11 +83,17 @@ public class ShoppingCartController extends BaseController {
         }
 
         if(id != null && discount != null) {
-            if(!discounts.containsKey(id)) {
-                Double percentage = (discount/100.0);
+            Double percentage = (discount / 100.0);
+            if (discounts.containsKey(id)) {
+                Double discountInHashMap = discounts.get(id);
+                if (percentage > discountInHashMap) {
+                    discounts.replace(id, percentage);
+                }
+            } else {
                 discounts.put(id, percentage);
             }
         }
+
         return "redirect:" + origin;
     }
 
