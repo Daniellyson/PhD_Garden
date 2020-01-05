@@ -5,18 +5,19 @@ import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 
+import com.spring.henallux.phD_Garden.service.CategoryService;
+import com.spring.henallux.phD_Garden.service.DiscountService;
 import com.spring.henallux.phD_Garden.service.ProductService;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping(value="/shopping-cart")
@@ -27,6 +28,9 @@ public class ShoppingCartController extends BaseController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private DiscountService discountService;
 
     private Double discountTotal = 0.0;
 
@@ -42,6 +46,30 @@ public class ShoppingCartController extends BaseController {
         model.addAttribute("locale", locale.getLanguage());
         model.addAttribute("categories", categories());
 
+        discounts.clear();
+        for (Map.Entry entry : shoppingCart.entrySet()) {
+            Product product = (Product)entry.getKey();
+            List<Discount> discountsList =  discountService.getAllDiscountById(new Date(), product.getId());
+            for(Discount discount : discountsList) {
+               // discounts.put(discount.getId(), ((double)((discount.getPercentage()))/100));
+                System.out.println(discount.toString() + "LLLLOOOLLLL1");
+                if(discount.getId() != null && discount != null) {
+                    Double percentage = ((double)((discount.getPercentage()))/100);
+                    if (discounts.containsKey(discount.getId())) {
+                        Double discountInHashMap = discounts.get(discount.getId());
+                        if (percentage > discountInHashMap) {
+                            discounts.replace(discount.getProduct().getId(), percentage);
+                        }
+                    } else {
+                        discounts.put(discount.getProduct().getId(), percentage);
+                    }
+                }
+            }
+
+        }
+
+
+
         try {
             Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
 
@@ -49,6 +77,7 @@ public class ShoppingCartController extends BaseController {
 
             for (Map.Entry entry : discounts.entrySet()) {
                 discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
+                System.out.println(discountTotal + "DISCOUNT");
             }
             model.addAttribute("discount", String.format("%.2f", discountTotal));
 
@@ -83,6 +112,22 @@ public class ShoppingCartController extends BaseController {
             shoppingCart.put(product, quantity);
         }
 
+        /*
+        discounts.clear();
+        for (Map.Entry entry : shoppingCart.entrySet()) {
+            Product product = (Product)entry.getKey();
+            List<Discount> discountsList =  discountService.getAllDiscountById(new Date(), product.getId());
+            for(Discount discount : discountsList) {
+                discounts.put(discount.getId(), ((double)((discount.getPercentage()))/100));
+            }
+            System.out.println(discounts.toString() + "LLLLOOOLLLL1");
+        }
+*/
+
+
+
+        /*
+        System.out.println(discounts.toString() + "LLLLOOOLLLL2");
         if(id != null && discount != null) {
             Double percentage = (discount / 100.0);
             if (discounts.containsKey(id)) {
@@ -94,6 +139,7 @@ public class ShoppingCartController extends BaseController {
                 discounts.put(id, percentage);
             }
         }
+        */
 
         return "redirect:" + origin;
     }

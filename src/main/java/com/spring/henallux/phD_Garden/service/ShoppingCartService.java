@@ -76,6 +76,7 @@ public class ShoppingCartService {
         for (Product product : products) {
 
             if(product.getId().equals(key)) {
+                System.out.println(product.getPrice()+" " + discount +" " + shoppingCart.get(product) + "  ETOJSEJEIOJI" );
                 totalDiscount += product.getPrice() * discount * shoppingCart.get(product);
             }
         }
