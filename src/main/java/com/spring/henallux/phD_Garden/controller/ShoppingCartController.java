@@ -87,7 +87,7 @@ public class ShoppingCartController extends BaseController {
             discountTotal = 0.0;
 
             return "integrated:shopping-cart";
-        }catch (QuantityException q ) {
+        } catch (QuantityException q ) {
             return "integrated:shopping-cart";
         }
 
