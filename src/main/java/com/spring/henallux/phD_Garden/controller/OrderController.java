@@ -70,20 +70,6 @@ public class OrderController extends BaseController {
 
     }
 
-    //TODO success paid
-    @RequestMapping(value = "/succeed", method= RequestMethod.GET)
-    public String successOrder(
-            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
-            Locale locale) {
-
-
-
-        shoppingCart.clear();
-
-        return "redirect:/";
-    }
-
-    //TODO not paid canceledOrder
     @RequestMapping(value = "/canceled", method= RequestMethod.GET)
     public String canceledOrder() {
 

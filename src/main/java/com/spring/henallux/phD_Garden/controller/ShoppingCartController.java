@@ -2,6 +2,7 @@ package com.spring.henallux.phD_Garden.controller;
 
 import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
 import com.spring.henallux.phD_Garden.exception.QuantityException;
+import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 
 import com.spring.henallux.phD_Garden.service.ProductService;
@@ -113,6 +114,17 @@ public class ShoppingCartController extends BaseController {
         }
 
         return "redirect:/shopping-cart";
+    }
+
+    @RequestMapping(value = "/succeed", method= RequestMethod.GET)
+    public String successOrder(
+            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
+            Locale locale) {
+
+        shoppingCart.clear();
+        discounts.clear();
+
+        return "redirect:/";
     }
 
 }
