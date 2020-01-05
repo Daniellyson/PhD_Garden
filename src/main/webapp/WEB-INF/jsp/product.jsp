@@ -54,7 +54,7 @@
                     </core:forEach>
                 </p>
 
-                <core:if test="${stockOut == 0}">
+                <core:if test="${stockOut == 0 && product.stock > 0}">
                     <form class="product-add-form" action="/phD_Garden/shopping-cart/add/${product.id}" method="get">
                         <spring:message code="quantity"/> :
 
@@ -72,7 +72,7 @@
                         <button type="submit"><spring:message code="addToBasket" /></button>
                     </form>
                 </core:if>
-                <core:if test="${stockOut == 1}">
+                <core:if test="${stockOut == 1 || product.stock < 1}">
                     <p class="product-sold-out"><spring:message code="soldOut"/></p>
                 </core:if>
             </div>
