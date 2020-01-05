@@ -127,7 +127,7 @@
                                         <spring:message code="total"/>
                                     </strong>
                                     <h5 class="font-weight-bold">
-                                        <core:if test="${totalOrder == 1}">
+                                        <core:if test="${totalOrder == '1,00'}">
                                             <spring:message code="symbolic" />
                                         </core:if>
                                         ${totalOrder}

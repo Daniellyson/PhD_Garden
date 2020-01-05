@@ -5,14 +5,12 @@ import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 
-import com.spring.henallux.phD_Garden.service.CategoryService;
 import com.spring.henallux.phD_Garden.service.DiscountService;
 import com.spring.henallux.phD_Garden.service.ProductService;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -67,7 +65,7 @@ public class ShoppingCartController extends BaseController {
         }
 
         try {
-            Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
+            Double orderSubtotal = shoppingCartService.calculationSubtotal(shoppingCart);
 
             model.addAttribute("orderSubtotal", String.format("%.2f", orderSubtotal));
 
@@ -78,10 +76,11 @@ public class ShoppingCartController extends BaseController {
             model.addAttribute("discount", String.format("%.2f", discountTotal));
 
             Double totalOrder = orderSubtotal - discountTotal;
+            if(totalOrder < 1) totalOrder = 1.0;
             model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
 
             discountTotal = 0.0;
-
+            System.out.println("dans controller " + totalOrder);
             return "integrated:shopping-cart";
         } catch (QuantityException q ) {
             return "integrated:shopping-cart";

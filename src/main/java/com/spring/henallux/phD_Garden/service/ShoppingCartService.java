@@ -50,7 +50,7 @@ public class ShoppingCartService {
         }
     }
 
-    public double calculationTotalPrice(HashMap<Product, Integer> shoppingCart) throws QuantityException {
+    public double calculationSubtotal(HashMap<Product, Integer> shoppingCart) throws QuantityException {
 
         double totalPrice = 0.0;
 
@@ -63,7 +63,7 @@ public class ShoppingCartService {
             totalPrice += key.getPrice() * shoppingCart.get(key);
         }
 
-        if(totalPrice < 1 && !shoppingCart.isEmpty()) totalPrice = 1.0;
+        System.out.println(totalPrice);
         return totalPrice;
     }
 

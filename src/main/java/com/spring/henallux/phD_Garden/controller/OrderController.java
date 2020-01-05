@@ -4,19 +4,14 @@ import com.spring.henallux.phD_Garden.dataAccess.util.Constants;
 import com.spring.henallux.phD_Garden.exception.QuantityException;
 import com.spring.henallux.phD_Garden.model.Product;
 import com.spring.henallux.phD_Garden.service.ShoppingCartService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -44,7 +39,7 @@ public class OrderController extends BaseController {
         }
 
         try {
-            Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
+            Double orderSubtotal = shoppingCartService.calculationSubtotal(shoppingCart);
 
             for (Map.Entry entry : shoppingCartController.getDiscounts().entrySet()) {
                 discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
@@ -53,6 +48,7 @@ public class OrderController extends BaseController {
             shoppingCartService.saveCart(shoppingCart, authentication);
 
             Double totalOrder = orderSubtotal - discountTotal;
+            if(totalOrder < 1) totalOrder = 1.0;
             model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
             model.addAttribute("totalPayPal", totalOrder);
 

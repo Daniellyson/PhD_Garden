@@ -1,23 +1,18 @@
 package com.spring.henallux.phD_Garden.service;
 
 import com.spring.henallux.phD_Garden.dataAccess.dao.DiscountDAO;
-import com.spring.henallux.phD_Garden.dataAccess.dao.UserDAO;
 import com.spring.henallux.phD_Garden.dataAccess.entity.DiscountEntity;
 import com.spring.henallux.phD_Garden.dataAccess.repository.DiscountRepository;
 import com.spring.henallux.phD_Garden.dataAccess.util.DiscountConverter;
 import com.spring.henallux.phD_Garden.exception.QuantityException;
-import com.spring.henallux.phD_Garden.model.Discount;
 import com.spring.henallux.phD_Garden.model.Product;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.*;
 
@@ -61,7 +56,7 @@ public class ShoppingCartServiceTest {
 
         double totalPrice = 0.0;
 
-        totalPrice = shoppingCartService.calculationTotalPrice(shoppingCart);
+        totalPrice = shoppingCartService.calculationSubtotal(shoppingCart);
 
 
         Assert.assertEquals( 50.00, totalPrice, 0.01);
@@ -82,7 +77,7 @@ public class ShoppingCartServiceTest {
 
         double totalPrice = 0.0;
 
-        totalPrice = shoppingCartService.calculationTotalPrice(shoppingCart);
+        totalPrice = shoppingCartService.calculationSubtotal(shoppingCart);
 
         Assert.assertEquals( 70.00, totalPrice, 0.01);
     }
@@ -94,7 +89,7 @@ public class ShoppingCartServiceTest {
 
         double totalPrice = 0.0;
 
-        totalPrice = shoppingCartService.calculationTotalPrice(shoppingCart);
+        totalPrice = shoppingCartService.calculationSubtotal(shoppingCart);
 
         Assert.assertEquals( 0.0, totalPrice, 0.01);
     }
@@ -109,7 +104,7 @@ public class ShoppingCartServiceTest {
         shoppingCart.put(product1, -5);
 
 
-        shoppingCartService.calculationTotalPrice(shoppingCart);
+        shoppingCartService.calculationSubtotal(shoppingCart);
 
     }
 
@@ -123,7 +118,7 @@ public class ShoppingCartServiceTest {
         shoppingCart.put(product1, 0);
 
 
-        shoppingCartService.calculationTotalPrice(shoppingCart);
+        shoppingCartService.calculationSubtotal(shoppingCart);
 
     }
 
