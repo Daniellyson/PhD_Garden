@@ -23,4 +23,8 @@ public class ProductService {
         return productDAO.getById(id);
     }
 
+    public void updateStock(Integer newStock, Integer id) {
+        productDAO.updateStock(newStock, id);
+    }
+
 }

@@ -127,6 +127,12 @@ public class ShoppingCartController extends BaseController {
             @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
             Locale locale) {
 
+        for (Map.Entry entry : shoppingCart.entrySet()) {
+            Product product = (Product)entry.getKey();
+            productService.updateStock( (product.getStock() - (Integer) entry.getValue()), product.getId());
+        }
+
+
         shoppingCart.clear();
         discounts.clear();
 

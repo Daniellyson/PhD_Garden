@@ -8,4 +8,6 @@ public interface ProductDataAccess {
     List<Product> getAllByCategory(Integer categoryId);
 
     Product getById(Integer id);
+
+    void updateStock(Integer newStock, Integer id);
 }
