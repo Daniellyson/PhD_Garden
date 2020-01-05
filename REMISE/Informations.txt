@@ -1,0 +1,14 @@
+Auteurs : 
+
+	- Vasconcelos Daniellyson
+	- Lempereur Pierre-Henri
+
+Nom : PHD_Garden
+
+Type de produits : Vente d'outils de jardinnage
+
+Catégories : Fleurs, outils, arbres, légumes
+
+Promotion : La base de données contient une liste de promotion à appliquer sur des produits. L'application récupère ces promotions et met à jour les informations du site. Lorsque le client accède à son caddie, l'application récupère les promotions qui peuvent être appliquées sur les produits choisis par le client et calcul la réduction.
+
+Schéma Entités-Associations : 

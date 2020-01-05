@@ -51,9 +51,7 @@ public class ShoppingCartController extends BaseController {
             Product product = (Product)entry.getKey();
             List<Discount> discountsList =  discountService.getAllDiscountById(new Date(), product.getId());
             for(Discount discount : discountsList) {
-               // discounts.put(discount.getId(), ((double)((discount.getPercentage()))/100));
-                System.out.println(discount.toString() + "LLLLOOOLLLL1");
-                if(discount.getId() != null && discount != null) {
+                if(discount.getId() != null) {
                     Double percentage = ((double)((discount.getPercentage()))/100);
                     if (discounts.containsKey(discount.getId())) {
                         Double discountInHashMap = discounts.get(discount.getId());
@@ -67,8 +65,6 @@ public class ShoppingCartController extends BaseController {
             }
 
         }
-
-
 
         try {
             Double orderSubtotal = shoppingCartService.calculationTotalPrice(shoppingCart);
@@ -98,10 +94,7 @@ public class ShoppingCartController extends BaseController {
             @PathVariable("id") Integer id,
             @RequestParam("quantity") Integer quantity,
             @RequestParam("origin") String origin,
-            @RequestParam(value = "percentage", required = false) Integer discount,
-            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart,
-            Model model,
-            Locale locale) {
+            @ModelAttribute(value = Constants.SHOPPING_CART) HashMap<Product, Integer> shoppingCart) {
 
         Product product = productService.loadProduct(id);
 
@@ -111,35 +104,6 @@ public class ShoppingCartController extends BaseController {
 
             shoppingCart.put(product, quantity);
         }
-
-        /*
-        discounts.clear();
-        for (Map.Entry entry : shoppingCart.entrySet()) {
-            Product product = (Product)entry.getKey();
-            List<Discount> discountsList =  discountService.getAllDiscountById(new Date(), product.getId());
-            for(Discount discount : discountsList) {
-                discounts.put(discount.getId(), ((double)((discount.getPercentage()))/100));
-            }
-            System.out.println(discounts.toString() + "LLLLOOOLLLL1");
-        }
-*/
-
-
-
-        /*
-        System.out.println(discounts.toString() + "LLLLOOOLLLL2");
-        if(id != null && discount != null) {
-            Double percentage = (discount / 100.0);
-            if (discounts.containsKey(id)) {
-                Double discountInHashMap = discounts.get(id);
-                if (percentage > discountInHashMap) {
-                    discounts.replace(id, percentage);
-                }
-            } else {
-                discounts.put(id, percentage);
-            }
-        }
-        */
 
         return "redirect:" + origin;
     }

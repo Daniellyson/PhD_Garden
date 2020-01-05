@@ -17,7 +17,6 @@ public class ShoppingCartService {
 
     private OrderService orderService;
     private OrderLineService orderLineService;
-    private DiscountService discountService;
 
     @Autowired
     public ShoppingCartService(OrderService orderService,
@@ -25,7 +24,6 @@ public class ShoppingCartService {
                        DiscountService discountService) {
         this.orderService = orderService;
         this.orderLineService = orderLineService;
-        this.discountService = discountService;
     }
 
     public ShoppingCartService() {
@@ -65,6 +63,7 @@ public class ShoppingCartService {
             totalPrice += key.getPrice() * shoppingCart.get(key);
         }
 
+        if(totalPrice == 0.0) totalPrice = 1.0;
         return totalPrice;
     }
 
@@ -76,7 +75,6 @@ public class ShoppingCartService {
         for (Product product : products) {
 
             if(product.getId().equals(key)) {
-                System.out.println(product.getPrice()+" " + discount +" " + shoppingCart.get(product) + "  ETOJSEJEIOJI" );
                 totalDiscount += product.getPrice() * discount * shoppingCart.get(product);
             }
         }
