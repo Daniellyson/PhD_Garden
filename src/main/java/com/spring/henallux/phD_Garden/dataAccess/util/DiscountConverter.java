@@ -17,6 +17,7 @@ public class DiscountConverter {
             discount.setPercentage(discountEntity.getPercentage());
             discount.setStartDate(discountEntity.getStartDate());
             discount.setEndDate(discountEntity.getEndDate());
+            discount.setProduct(ProviderConverter.productEntityToProductModel(discountEntity.getProductEntity()));
         }
 
         return discount;
@@ -32,6 +33,7 @@ public class DiscountConverter {
             discountEntity.setPercentage(discount.getPercentage());
             discountEntity.setStartDate(discount.getStartDate());
             discountEntity.setEndDate(discount.getEndDate());
+            discountEntity.setProductEntity(ProviderConverter.productModelToProductEntity(discount.getProduct()));
         }
 
         return discountEntity;

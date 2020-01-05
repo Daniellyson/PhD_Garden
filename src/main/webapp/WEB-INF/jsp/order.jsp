@@ -38,7 +38,7 @@
                         <input type="hidden" name="cmd" value="_xclick"/>
                         <input type="hidden" name="amount" value="${totalPayPal}"/>
                         <input type="hidden" name="item_name" value="PHD GARDEN"/>
-                        <input type="hidden" name="return" value="http://localhost:8082/phD_Garden/order/succeed"/>
+                        <input type="hidden" name="return" value="http://localhost:8082/phD_Garden/shopping-cart/succeed"/>
                         <input type="hidden" name="cancel" value="http://localhost:8082/phD_Garden/order/canceled"/>
                         <input type="hidden" name="currency" value="EUR"/>
                         <input type="hidden" name="lc" value="${locale}"/>

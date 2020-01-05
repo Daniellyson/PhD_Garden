@@ -57,5 +57,4 @@ public class ProductController extends BaseController {
 
         return "integrated:product";
     }
-
 }
