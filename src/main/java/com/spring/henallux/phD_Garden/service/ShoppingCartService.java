@@ -63,7 +63,7 @@ public class ShoppingCartService {
             totalPrice += key.getPrice() * shoppingCart.get(key);
         }
 
-        if(totalPrice == 0.0) totalPrice = 1.0;
+        if(totalPrice < 1) totalPrice = 1.0;
         return totalPrice;
     }
 
