@@ -71,16 +71,13 @@ public class ShoppingCartController extends BaseController {
 
             for (Map.Entry entry : discounts.entrySet()) {
                 discountTotal += shoppingCartService.calculationDiscount((Integer) entry.getKey(), (Double)entry.getValue(), shoppingCart);
-                System.out.println(discountTotal + "DISCOUNT");
             }
             model.addAttribute("discount", String.format("%.2f", discountTotal));
 
-            Double totalOrder = orderSubtotal - discountTotal;
-            if(totalOrder < 1) totalOrder = 1.0;
+            Double totalOrder = shoppingCartService.totalPrice(orderSubtotal, discountTotal, shoppingCart);
             model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
 
             discountTotal = 0.0;
-            System.out.println("dans controller " + totalOrder);
             return "integrated:shopping-cart";
         } catch (QuantityException q ) {
             return "integrated:shopping-cart";

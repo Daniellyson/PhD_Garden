@@ -20,8 +20,7 @@ public class ShoppingCartService {
 
     @Autowired
     public ShoppingCartService(OrderService orderService,
-                       OrderLineService orderLineService,
-                       DiscountService discountService) {
+                       OrderLineService orderLineService) {
         this.orderService = orderService;
         this.orderLineService = orderLineService;
     }
@@ -63,7 +62,6 @@ public class ShoppingCartService {
             totalPrice += key.getPrice() * shoppingCart.get(key);
         }
 
-        System.out.println(totalPrice);
         return totalPrice;
     }
 
@@ -79,5 +77,9 @@ public class ShoppingCartService {
             }
         }
         return totalDiscount;
+    }
+
+    public Double totalPrice(Double subTotal, Double discount, HashMap<Product, Integer> shoppingCart) {
+        return ((subTotal - discount) < 1.0 && !shoppingCart.isEmpty()) ? 1.0:(subTotal - discount);
     }
 }

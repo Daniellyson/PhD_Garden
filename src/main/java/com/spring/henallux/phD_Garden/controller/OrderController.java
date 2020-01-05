@@ -47,8 +47,7 @@ public class OrderController extends BaseController {
 
             shoppingCartService.saveCart(shoppingCart, authentication);
 
-            Double totalOrder = orderSubtotal - discountTotal;
-            if(totalOrder < 1) totalOrder = 1.0;
+            Double totalOrder = shoppingCartService.totalPrice(orderSubtotal, discountTotal, shoppingCart);
             model.addAttribute("totalOrder", String.format("%.2f",totalOrder));
             model.addAttribute("totalPayPal", totalOrder);
 
