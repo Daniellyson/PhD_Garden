@@ -11,7 +11,7 @@ public class OrderEntity {
     private Integer orderId;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private UserEntity user;
 
     @Column(name = "order_date")

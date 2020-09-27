@@ -2,10 +2,12 @@ package com.spring.henallux.phD_Garden.dataAccess.util;
 
 import com.spring.henallux.phD_Garden.dataAccess.entity.*;
 import com.spring.henallux.phD_Garden.model.*;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ProviderConverter {
     public static UserEntity userModelToUserEntity(User user) {
         UserEntity userEntity = new UserEntity();

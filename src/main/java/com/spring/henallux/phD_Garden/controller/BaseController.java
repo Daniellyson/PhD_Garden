@@ -40,10 +40,10 @@ public class BaseController {
         return new HashMap<Product, Integer>();
     }
 
-    @ModelAttribute(Constants.DISCOUNTS)
+    /*@ModelAttribute(Constants.DISCOUNTS)
     public HashMap<Integer, Discount> discount() {
         return new HashMap<Integer, Discount>();
-    }
+    }*/
 
     public List<Category> categories() {
        return (List<Category>)categoryService.getAllCategories();

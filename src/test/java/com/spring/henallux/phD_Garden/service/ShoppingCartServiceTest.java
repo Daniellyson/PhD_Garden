@@ -17,8 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.*;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -133,7 +132,7 @@ public class ShoppingCartServiceTest {
         mokedDiscounts.add(discount1);
         mokedDiscounts.add(discount2);
 
-        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
+        lenient().when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
 
         List<DiscountEntity> discounts = new ArrayList<>();
         DiscountEntity discount3 = new DiscountEntity();
@@ -145,7 +144,7 @@ public class ShoppingCartServiceTest {
 
         DiscountEntity discount = new DiscountEntity();
         discount.setId(1);
-        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
+        lenient().when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
 
         assertEquals(discount.getId(),  discounts.get(0).getId());
     }
@@ -161,7 +160,7 @@ public class ShoppingCartServiceTest {
         mokedDiscounts.add(discount1);
         mokedDiscounts.add(discount2);
 
-        when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
+        lenient().when(discountRepository.findByStartDateBeforeAndEndDateAfterAndProductEntityId(new Date(), new Date(), 1)).thenReturn(mokedDiscounts);
 
         List<DiscountEntity> discounts = new ArrayList<>();
         DiscountEntity discount3 = new DiscountEntity();
@@ -173,7 +172,7 @@ public class ShoppingCartServiceTest {
 
         DiscountEntity discount = new DiscountEntity();
         discount.setId(5);
-        when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
+        lenient().when(discountConverter.discountModelToDiscountEntity(discountDAO.getDiscountById(discounts.get(0).getId()))).thenReturn(discount);
 
         assertNotEquals(discount.getId(),  discounts.get(0).getId());
 

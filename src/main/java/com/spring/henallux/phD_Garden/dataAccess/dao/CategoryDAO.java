@@ -6,6 +6,7 @@ import com.spring.henallux.phD_Garden.dataAccess.util.CategoryConverter;
 import com.spring.henallux.phD_Garden.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Column;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class CategoryDAO implements CategoryDataAccess {
 
     private CategoryRepository categoryRepository;

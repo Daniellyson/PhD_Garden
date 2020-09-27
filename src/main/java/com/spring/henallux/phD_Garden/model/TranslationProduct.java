@@ -13,8 +13,7 @@ public class TranslationProduct implements Serializable {
     private String description;
     private Product product;
 
-    public TranslationProduct() {
-    }
+    public TranslationProduct() { }
 
     public TranslationProduct(Language language, String product_name, String description, Product product) {
         this.language = language;

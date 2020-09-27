@@ -15,7 +15,11 @@
      <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
 
           <a href="/phD_Garden/"><img id="logo" src="<core:url value='/static/img/welcome.jpg'/>"/></a>
-          <a class="navbar-brand" href="/phD_Garden/">PhD Garden</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand" href="/phD_Garden/">PhD Garden</a>
+          <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+               <span class="sr-only"></span>
+               <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse"
                id="navcol-1">
                <ul class="nav navbar-nav mr-auto">
