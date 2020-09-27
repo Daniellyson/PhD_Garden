@@ -1,27 +1,27 @@
 # PhD_Garden
 Spring project
 
-##Home
+## Home
 
 <img src="REMISE/1.png">
 
-##Empty cart
+## Empty cart
 
 <img src="REMISE/2.png">
 
-##Category 1
+## Category 1
 
 <img src="REMISE/3.png">
 
-##Category 3
+## Category 3
 
 <img src="REMISE/4.png">
 
-##Cart
+## Cart
 
 <img src="REMISE/5.png">
 
-##Order
+## Order
 
 <img src="REMISE/6.png">
 
